@@ -4,6 +4,9 @@
 package ar.edu.um.programacion2.oficios.domain;
 
 import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.reference.Categoria;
+import ar.edu.um.programacion2.oficios.reference.Disponibilidad;
+import ar.edu.um.programacion2.oficios.reference.Localidad;
 
 privileged aspect Servicio_Roo_JavaBean {
     
@@ -131,6 +134,60 @@ privileged aspect Servicio_Roo_JavaBean {
      */
     public void Servicio.setPuntaje(float puntaje) {
         this.puntaje = puntaje;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Localidad
+     */
+    public Localidad Servicio.getLocalidad() {
+        return this.localidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param localidad
+     */
+    public void Servicio.setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Disponibilidad
+     */
+    public Disponibilidad Servicio.getDisponibilidad() {
+        return this.disponibilidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param disponibilidad
+     */
+    public void Servicio.setDisponibilidad(Disponibilidad disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Categoria
+     */
+    public Categoria Servicio.getCategoria() {
+        return this.categoria;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     */
+    public void Servicio.setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     
 }

@@ -48,4 +48,13 @@ public class Disponibilidad {
      *
      */
     private String descripcion;
+
+	/**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+        return franjahoraria + " - " + descripcion;
+    }
 }

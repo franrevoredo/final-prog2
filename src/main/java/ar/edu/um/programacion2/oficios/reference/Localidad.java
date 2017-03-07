@@ -48,4 +48,13 @@ public class Localidad {
      *
      */
     private String descripcion;
+
+	/**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+    	return nombre;
+    }
 }
