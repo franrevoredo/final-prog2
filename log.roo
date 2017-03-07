@@ -1,0 +1,56 @@
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log opened at 2017-03-06 20:50:24
+project setup --topLevelPackage ar.edu.um.programacion2.oficios --java 8
+jpa setup --database MYSQL --provider HIBERNATE --hostName 127.0.0.1 --databaseName oficiosdb --userName root
+entity jpa --class ~.reference.Persona
+field string --fieldName username --unique
+field string --fieldName password --notNull
+field string --fieldName email --unique
+field string --fieldName telefono
+field file --fieldName avatar --contentType PNG 
+entity jpa --class ~.domain.Prestador  --extends ~.reference.Persona
+field string --fieldName razonsocial --notNull
+field string --fieldName oficio --notNull
+entity jpa --class ~.reference.Disponibilidad
+field string --fieldName franjahoraria --notNull
+field string --fieldName descripcion
+entity jpa --class ~.reference.Localidad
+field string --fieldName nombre --notNull
+field string --fieldName descripcion
+entity jpa --class ~.reference.Categoria
+field string --fieldName nombre --notNull
+field string --fieldName descripcion
+enum type --class ~.reference.TipoCalif
+enum constant --name POSITIVO
+enum constant --name NEGATIVO
+enum constant --name NEUTRAL
+entity jpa --class ~.domain.Cliente  --extends ~.reference.Persona
+field string --fieldName nombre --notNull 
+field string --fieldName apellido --notNull
+field string --fieldName domicilio
+field string --fieldName domicilio2
+entity jpa --class ~.domain.Calificacion
+field string --fieldName comentario --notNull
+field enum --fieldName tipo --type ~.reference.TipoCalif
+entity jpa --class ~.domain.CalificacionCliente  --extends ~.domain.Calificacion
+entity jpa --class ~.domain.Servicio
+field string --fieldName nombre --notNull 
+field string --fieldName descripcion
+field file --fieldName logo --contentType PNG
+field string --fieldName telefono --notNull
+field number --fieldName puntaje --type float
+entity jpa --class ~.domain.CalificacionPrestador  --extends ~.domain.Calificacion
+repository jpa --all
+finder add --name findByTelefono --entity ~.domain.Servicio
+finder add --name findByNombreLike --entity ~.domain.Servicio
+finder add --name findByPuntaje --entity ~.domain.Servicio
+finder add --name findByUsername --entity ~.domain.Cliente
+finder add --name findByUsername --entity ~.domain.Prestador
+finder add --name findByEmail --entity ~.domain.Cliente
+finder add --name findByEmail --entity ~.domain.Prestador
+service --all
+web mvc setup
+web mvc view setup --type THYMELEAF
+web mvc controller --all --responseType THYMELEAF
+web mvc templates setup --type THYMELEAF
+web mvc language --code es --useAsDefault
+// script --file script_roo

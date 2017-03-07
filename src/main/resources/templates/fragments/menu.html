@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page menu</title>
+  </head>
+  <body id="body">
+    <!--
+    Only the internal content of the following div is included within
+    the template, in menu fragment
+    -->
+    <nav class="navbar navbar-default navbar-static-top" data-th-fragment="menu">
+
+         <div class="container">
+
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainnav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <!-- Brand logo -->
+              <div class="organization-logo navbar-brand">
+                <a title="oficios" href="/" data-th-href="@{/}">
+                  <img alt="oficios" data-th-src="@{/public/img/logo.png}" src="../../static/public/img/logo.png" />
+                </a>
+              </div>
+              <!-- Name application -->
+              <div class="application-name navbar-brand hidden-xs">
+                <a data-th-title="#{label_goHome}" href="/" data-th-href="@{/}">oficios</a>
+              </div>
+
+            </div><!-- /navbar-header -->
+
+            <div id="mainnav" class="navbar-collapse collapse">
+
+              <ul class="nav navbar-nav" id="entitiesMenuEntries">
+                <li class="dropdown" id="calificacion-entry" data-z="52693668">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_calificacion})}">Calificacion<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/calificacions/create-form" data-th-href="@{/calificacions/create-form}" data-th-utext="#{label_create_entity(#{label_calificacion})}">Create Calificacion</a></li>
+	                  <li><a href="/calificacions" data-th-href="@{/calificacions}" data-th-utext="#{label_list_entity(#{label_calificacion_plural})}">List Calificacion</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="calificacioncliente-entry" data-z="65b1a736">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_calificacioncliente})}">CalificacionCliente<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/calificacionclientes/create-form" data-th-href="@{/calificacionclientes/create-form}" data-th-utext="#{label_create_entity(#{label_calificacioncliente})}">Create CalificacionCliente</a></li>
+	                  <li><a href="/calificacionclientes" data-th-href="@{/calificacionclientes}" data-th-utext="#{label_list_entity(#{label_calificacioncliente_plural})}">List CalificacionCliente</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="calificacionprestador-entry" data-z="acd7b176">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_calificacionprestador})}">CalificacionPrestador<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/calificacionprestadors/create-form" data-th-href="@{/calificacionprestadors/create-form}" data-th-utext="#{label_create_entity(#{label_calificacionprestador})}">Create CalificacionPrestador</a></li>
+	                  <li><a href="/calificacionprestadors" data-th-href="@{/calificacionprestadors}" data-th-utext="#{label_list_entity(#{label_calificacionprestador_plural})}">List CalificacionPrestador</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="categoria-entry" data-z="1e841c16">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_categoria})}">Categoria<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/categorias/create-form" data-th-href="@{/categorias/create-form}" data-th-utext="#{label_create_entity(#{label_categoria})}">Create Categoria</a></li>
+	                  <li><a href="/categorias" data-th-href="@{/categorias}" data-th-utext="#{label_list_entity(#{label_categoria_plural})}">List Categoria</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="cliente-entry" data-z="5b7dd6">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_cliente})}">Cliente<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/clientes/create-form" data-th-href="@{/clientes/create-form}" data-th-utext="#{label_create_entity(#{label_cliente})}">Create Cliente</a></li>
+	                  <li><a href="/clientes" data-th-href="@{/clientes}" data-th-utext="#{label_list_entity(#{label_cliente_plural})}">List Cliente</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="disponibilidad-entry" data-z="6bf5428">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_disponibilidad})}">Disponibilidad<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/disponibilidads/create-form" data-th-href="@{/disponibilidads/create-form}" data-th-utext="#{label_create_entity(#{label_disponibilidad})}">Create Disponibilidad</a></li>
+	                  <li><a href="/disponibilidads" data-th-href="@{/disponibilidads}" data-th-utext="#{label_list_entity(#{label_disponibilidad_plural})}">List Disponibilidad</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="localidad-entry" data-z="5c598416">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_localidad})}">Localidad<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/localidads/create-form" data-th-href="@{/localidads/create-form}" data-th-utext="#{label_create_entity(#{label_localidad})}">Create Localidad</a></li>
+	                  <li><a href="/localidads" data-th-href="@{/localidads}" data-th-utext="#{label_list_entity(#{label_localidad_plural})}">List Localidad</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="persona-entry" data-z="fdbb18a4">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_persona})}">Persona<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/personae/create-form" data-th-href="@{/personae/create-form}" data-th-utext="#{label_create_entity(#{label_persona})}">Create Persona</a></li>
+	                  <li><a href="/personae" data-th-href="@{/personae}" data-th-utext="#{label_list_entity(#{label_persona_plural})}">List Persona</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="prestador-entry" data-z="44666016">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_prestador})}">Prestador<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/prestadors/create-form" data-th-href="@{/prestadors/create-form}" data-th-utext="#{label_create_entity(#{label_prestador})}">Create Prestador</a></li>
+	                  <li><a href="/prestadors" data-th-href="@{/prestadors}" data-th-utext="#{label_list_entity(#{label_prestador_plural})}">List Prestador</a></li>
+                 </ul>
+                </li>
+                <li class="dropdown" id="servicio-entry" data-z="7306e6e8">
+                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-th-utext="#{label_menu_entry(#{label_servicio})}">Servicio<span class="caret"></span></a>
+                 <ul class="dropdown-menu">
+	                   <li><a href="/servicios/create-form" data-th-href="@{/servicios/create-form}" data-th-utext="#{label_create_entity(#{label_servicio})}">Create Servicio</a></li>
+	                  <li><a href="/servicios" data-th-href="@{/servicios}" data-th-utext="#{label_list_entity(#{label_servicio_plural})}">List Servicio</a></li>
+                 </ul>
+                </li>
+              </ul>
+
+              <!-- Language select -->
+              <ul class="nav navbar-nav navbar-right upper-nav languages" data-th-replace="~{fragments/languages :: languages}">
+                <!-- Content replaced by the session template fragment language.html
+                -->
+                <span>Language data</span>
+              </ul>
+
+
+
+              <!-- User menu links -->
+              <ul class="nav navbar-nav navbar-right upper-nav links" data-th-replace="~{fragments/session-links :: links}">
+                <!-- Content replaced by the links template fragment session-links.html
+                -->
+                <span>User session data</span>
+              </ul>
+           </div>
+
+          </div>
+    </nav>
+
+    <!--
+    Only the internal content of the following div is included within
+    the template, in menu-languages fragment
+    -->
+    <nav class="navbar navbar-default navbar-static-top" data-th-fragment="menu-languages">
+
+         <div class="container">
+
+            <div class="navbar-header">
+
+              <!-- Brand logo -->
+              <div class="organization-logo navbar-brand">
+                <a title="oficios" href="/" data-th-href="@{/}">
+                  <img alt="oficios" data-th-src="@{/public/img/logo.png}" src="../../static/public/img/logo.png" />
+                </a>
+              </div>
+              <!-- Name application -->
+              <div class="application-name navbar-brand hidden-xs">
+                <a data-th-title="#{label_goHome}" href="/" data-th-href="@{/}">oficios</a>
+              </div>
+
+            </div><!-- /navbar-header -->
+
+            <div id="mainnav" class="navbar-collapse collapse">
+
+              <!-- Language select -->
+              <ul class="nav navbar-nav navbar-right upper-nav languages" data-th-replace="~{fragments/languages :: languages}">
+                <!-- Content replaced by the session template fragment language.html
+                -->
+                <span>Language data</span>
+              </ul>
+
+           </div>
+
+          </div>
+    </nav>
+
+  </body>
+</html>

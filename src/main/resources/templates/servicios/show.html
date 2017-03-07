@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_servicio})}|">Show Servicio - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${servicio}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_servicio})}">Show Servicio</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_servicio})}">Servicio data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="servicio-nombre-field" data-z="15c04ac1">
+            	      <strong data-th-text="#{label_servicio_nombre}">nombre</strong>
+                    <span data-th-text="*{{nombre}}">nombreValue</span>
+         	        </li>
+                  <li id="servicio-descripcion-field" data-z="8d2c287d">
+            	      <strong data-th-text="#{label_servicio_descripcion}">descripcion</strong>
+                    <span data-th-text="*{{descripcion}}">descripcionValue</span>
+         	        </li>
+                  <li id="servicio-logo-field" data-z="54220f01">
+            	      <strong data-th-text="#{label_servicio_logo}">logo</strong>
+                    <span data-th-text="*{{logo}}">logoValue</span>
+         	        </li>
+                  <li id="servicio-telefono-field" data-z="f1acb8e1">
+            	      <strong data-th-text="#{label_servicio_telefono}">telefono</strong>
+                    <span data-th-text="*{{telefono}}">telefonoValue</span>
+         	        </li>
+                  <li id="servicio-puntaje-field" data-z="9c8f9efd">
+            	      <strong data-th-text="#{label_servicio_puntaje}">puntaje</strong>
+                    <span data-th-text="*{{puntaje}}">puntajeValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="Servicio_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('ServiciosItemThymeleafController').to('editForm').with('servicio', servicio.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+          </div>
+
+
+          <div class="clearfix">
+            <div class="pull-left">
+              <a id="Servicio_list" href="list.html" class="btn btn-default" data-th-title="#{label_goBack}" data-th-href="${@linkBuilder.of('ServiciosCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>
