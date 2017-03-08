@@ -7,6 +7,8 @@ import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.repository.CategoriaRepository;
 import ar.edu.um.programacion2.oficios.repository.CategoriaRepositoryCustom;
 import io.springlets.data.jpa.repository.DetachableJpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect CategoriaRepository_Roo_Jpa_Repository {
@@ -16,5 +18,22 @@ privileged aspect CategoriaRepository_Roo_Jpa_Repository {
     declare parents: CategoriaRepository extends CategoriaRepositoryCustom;
     
     declare @type: CategoriaRepository: @Transactional(readOnly = true);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param nombre
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Categoria> CategoriaRepository.findByNombre(String nombre, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param nombre
+     * @return Long
+     */
+    public abstract long CategoriaRepository.countByNombre(String nombre);
     
 }

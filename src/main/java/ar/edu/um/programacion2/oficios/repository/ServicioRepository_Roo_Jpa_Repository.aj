@@ -4,6 +4,7 @@
 package ar.edu.um.programacion2.oficios.repository;
 
 import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.repository.ServicioRepository;
 import ar.edu.um.programacion2.oficios.repository.ServicioRepositoryCustom;
 import io.springlets.data.jpa.repository.DetachableJpaRepository;
@@ -69,5 +70,31 @@ privileged aspect ServicioRepository_Roo_Jpa_Repository {
      * @return Long
      */
     public abstract long ServicioRepository.countByPuntaje(float puntaje);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Servicio> ServicioRepository.findByCategoria(Categoria categoria, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     * @return Long
+     */
+    public abstract long ServicioRepository.countByCategoria(Categoria categoria);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Servicio> ServicioRepository.queryByCategoria(Categoria categoria, Pageable pageable);
     
 }

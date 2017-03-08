@@ -159,6 +159,27 @@ privileged aspect CategoriaServiceImpl_Roo_Service_Impl {
     /**
      * TODO Auto-generated method documentation
      * 
+     * @param nombre
+     * @param pageable
+     * @return Page
+     */
+    public Page<Categoria> CategoriaServiceImpl.findByNombre(String nombre, Pageable pageable) {
+        return getCategoriaRepository().findByNombre(nombre, pageable);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param nombre
+     * @return Long
+     */
+    public long CategoriaServiceImpl.countByNombre(String nombre) {
+        return getCategoriaRepository().countByNombre(nombre);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
      * @return Class
      */
     public Class<Categoria> CategoriaServiceImpl.getEntityType() {

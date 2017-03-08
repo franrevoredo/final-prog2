@@ -92,4 +92,21 @@ privileged aspect CategoriaService_Roo_Service {
      */
     public abstract Page<Categoria> CategoriaService.findAll(GlobalSearch globalSearch, Pageable pageable);
     
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param nombre
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Categoria> CategoriaService.findByNombre(String nombre, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param nombre
+     * @return Long
+     */
+    public abstract long CategoriaService.countByNombre(String nombre);
+    
 }

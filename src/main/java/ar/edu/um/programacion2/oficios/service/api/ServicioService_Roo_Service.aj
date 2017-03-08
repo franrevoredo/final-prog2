@@ -4,6 +4,7 @@
 package ar.edu.um.programacion2.oficios.service.api;
 
 import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.service.api.ServicioService;
 import io.springlets.data.domain.GlobalSearch;
 import io.springlets.format.EntityResolver;
@@ -122,6 +123,24 @@ privileged aspect ServicioService_Roo_Service {
     /**
      * TODO Auto-generated method documentation
      * 
+     * @param categoria
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Servicio> ServicioService.findByCategoria(Categoria categoria, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Servicio> ServicioService.queryByCategoria(Categoria categoria, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
      * @param telefono
      * @return Long
      */
@@ -142,5 +161,13 @@ privileged aspect ServicioService_Roo_Service {
      * @return Long
      */
     public abstract long ServicioService.countByPuntaje(float puntaje);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     * @return Long
+     */
+    public abstract long ServicioService.countByCategoria(Categoria categoria);
     
 }
