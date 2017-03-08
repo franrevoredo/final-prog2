@@ -133,4 +133,22 @@ privileged aspect Persona_Roo_JavaBean {
         this.avatar = avatar;
     }
     
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Integer
+     */
+    public int Persona.getEnabled() {
+        return this.enabled;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param enabled
+     */
+    public void Persona.setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+    
 }

@@ -3,6 +3,8 @@ import ar.edu.um.programacion2.oficios.reference.Persona;
 import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
 import org.springframework.roo.addon.javabean.annotations.RooToString;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
+
+import javax.persistence.DiscriminatorValue;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -14,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @RooJavaBean
 @RooToString
 @RooJpaEntity
+@DiscriminatorValue("ROLE_PRESTADOR")
 public class Prestador extends Persona {
 
     /**

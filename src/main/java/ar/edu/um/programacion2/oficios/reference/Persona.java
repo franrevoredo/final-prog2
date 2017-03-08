@@ -73,4 +73,7 @@ public class Persona {
     @RooUploadedFile(contentType = "image/png")
     @Lob
     private byte[] avatar;
+    
+    private int enabled = 1;
+    
 }

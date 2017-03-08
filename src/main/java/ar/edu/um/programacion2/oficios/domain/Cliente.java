@@ -7,6 +7,7 @@ import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
 
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,6 +24,7 @@ import javax.validation.constraints.NotNull;
 @RooJavaBean
 @RooToString
 @RooJpaEntity
+@DiscriminatorValue("ROLE_CLIENTE")
 public class Cliente extends Persona {
 
     public Cliente(String nombre, String apellido, String domicilio, Localidad localidad) {

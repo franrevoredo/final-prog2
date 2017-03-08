@@ -1,4 +1,5 @@
 package ar.edu.um.programacion2.oficios.web;
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,4 +52,11 @@ public class MainController {
     	
         return "index";
     }
+    
+    @GetMapping("/myprofile")
+    public String myProfile(Model model, Principal principal, Pageable pageable) {
+    	
+		return null;
+    }
+    
 }

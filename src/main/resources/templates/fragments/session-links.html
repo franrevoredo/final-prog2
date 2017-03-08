@@ -9,7 +9,7 @@
     Only the internal content of the following div is included within
     the template, in session fragment
     -->
-    <ul class="nav navbar-nav navbar-right upper-nav session" data-th-fragment="session">
+    <ul class="nav navbar-nav navbar-right upper-nav session" data-th-fragment="session" sec:authorize="isAuthenticated()">
       <!-- User menu -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -18,7 +18,9 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-           <li><a href="#"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+           <li sec:authorize="!hasRole('ROLE_ADMINISTRADOR')"><a th:href="@{/admpanel}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+           &nbsp;<span data-th-text="#{my_profile}">My Profile</span></a></li>
+           <li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a th:href="@{/admpanel}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
            &nbsp;<span data-th-text="#{label_profile}">Admin Profile</span></a></li>
            <li><a href="#"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
            &nbsp;<span data-th-text="#{label_change_password}">Change password</span></a></li>

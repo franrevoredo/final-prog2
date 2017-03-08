@@ -21,6 +21,7 @@ privileged aspect Persona_Roo_ToString {
                 ", email='" + email + '\'' + 
                 ", telefono='" + telefono + '\'' + 
                 ", avatar='" + avatar + '\'' + 
+                ", enabled='" + enabled + '\'' + 
                 ", ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_ADD_CANT_BE_NULL_MESSAGE + '\'' + 
                 ", ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE='" + ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE + '\'' + "}" + super.toString();
     }

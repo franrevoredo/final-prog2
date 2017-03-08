@@ -46,6 +46,12 @@ privileged aspect PersonaRepositoryImpl_Roo_Jpa_Repository_Impl {
     public static final String PersonaRepositoryImpl.TELEFONO = "telefono";
     
     /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String PersonaRepositoryImpl.ENABLED = "enabled";
+    
+    /**
      * TODO Auto-generated method documentation
      * 
      * @param globalSearch
@@ -58,14 +64,15 @@ privileged aspect PersonaRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Persona> query = from(persona);
         
-        Path<?>[] paths = new Path<?>[] {persona.username,persona.password,persona.email,persona.telefono};        
+        Path<?>[] paths = new Path<?>[] {persona.username,persona.password,persona.email,persona.telefono,persona.enabled};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
 			.map(USERNAME, persona.username)
 			.map(PASSWORD, persona.password)
 			.map(EMAIL, persona.email)
-			.map(TELEFONO, persona.telefono);
+			.map(TELEFONO, persona.telefono)
+			.map(ENABLED, persona.enabled);
         
         applyPagination(pageable, query, mapping);
         applyOrderById(query);
