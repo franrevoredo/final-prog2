@@ -34,6 +34,18 @@ privileged aspect CalificacionPrestadorRepositoryImpl_Roo_Jpa_Repository_Impl {
     public static final String CalificacionPrestadorRepositoryImpl.TIPO = "tipo";
     
     /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String CalificacionPrestadorRepositoryImpl.CALIFICACION___DESTINO = "calificacion_destino";
+    
+    /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String CalificacionPrestadorRepositoryImpl.AUTOR = "autor";
+    
+    /**
      * TODO Auto-generated method documentation
      * 
      * @param globalSearch
@@ -46,12 +58,14 @@ privileged aspect CalificacionPrestadorRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<CalificacionPrestador> query = from(calificacionPrestador);
         
-        Path<?>[] paths = new Path<?>[] {calificacionPrestador.comentario,calificacionPrestador.tipo};        
+        Path<?>[] paths = new Path<?>[] {calificacionPrestador.comentario,calificacionPrestador.tipo,calificacionPrestador.calificacion_destino,calificacionPrestador.autor};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
 			.map(COMENTARIO, calificacionPrestador.comentario)
-			.map(TIPO, calificacionPrestador.tipo);
+			.map(TIPO, calificacionPrestador.tipo)
+			.map(CALIFICACION___DESTINO, calificacionPrestador.calificacion_destino)
+			.map(AUTOR, calificacionPrestador.autor);
         
         applyPagination(pageable, query, mapping);
         applyOrderById(query);

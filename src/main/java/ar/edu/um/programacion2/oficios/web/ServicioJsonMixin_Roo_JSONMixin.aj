@@ -3,8 +3,14 @@
 
 package ar.edu.um.programacion2.oficios.web;
 
+import ar.edu.um.programacion2.oficios.domain.Prestador;
+import ar.edu.um.programacion2.oficios.reference.Categoria;
+import ar.edu.um.programacion2.oficios.reference.Disponibilidad;
 import ar.edu.um.programacion2.oficios.reference.Localidad;
+import ar.edu.um.programacion2.oficios.web.CategoriaDeserializer;
+import ar.edu.um.programacion2.oficios.web.DisponibilidadDeserializer;
 import ar.edu.um.programacion2.oficios.web.LocalidadDeserializer;
+import ar.edu.um.programacion2.oficios.web.PrestadorDeserializer;
 import ar.edu.um.programacion2.oficios.web.ServicioJsonMixin;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -14,8 +20,65 @@ privileged aspect ServicioJsonMixin_Roo_JSONMixin {
      * TODO Auto-generated attribute documentation
      * 
      */
+    @JsonDeserialize(using = CategoriaDeserializer.class)
+    private Categoria ServicioJsonMixin.categoria;
+    
+    /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    @JsonDeserialize(using = DisponibilidadDeserializer.class)
+    private Disponibilidad ServicioJsonMixin.disponibilidad;
+    
+    /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
     @JsonDeserialize(using = LocalidadDeserializer.class)
     private Localidad ServicioJsonMixin.localidad;
+    
+    /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    @JsonDeserialize(using = PrestadorDeserializer.class)
+    private Prestador ServicioJsonMixin.prestador;
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Categoria
+     */
+    public Categoria ServicioJsonMixin.getCategoria() {
+        return categoria;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param categoria
+     */
+    public void ServicioJsonMixin.setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Disponibilidad
+     */
+    public Disponibilidad ServicioJsonMixin.getDisponibilidad() {
+        return disponibilidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param disponibilidad
+     */
+    public void ServicioJsonMixin.setDisponibilidad(Disponibilidad disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
     
     /**
      * TODO Auto-generated method documentation
@@ -33,6 +96,24 @@ privileged aspect ServicioJsonMixin_Roo_JSONMixin {
      */
     public void ServicioJsonMixin.setLocalidad(Localidad localidad) {
         this.localidad = localidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Prestador
+     */
+    public Prestador ServicioJsonMixin.getPrestador() {
+        return prestador;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param prestador
+     */
+    public void ServicioJsonMixin.setPrestador(Prestador prestador) {
+        this.prestador = prestador;
     }
     
 }
