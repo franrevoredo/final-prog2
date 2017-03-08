@@ -3,11 +3,13 @@
 
 package ar.edu.um.programacion2.oficios.domain;
 
+import ar.edu.um.programacion2.oficios.domain.CalificacionCliente;
 import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.reference.Disponibilidad;
 import ar.edu.um.programacion2.oficios.reference.Localidad;
+import java.util.List;
 
 privileged aspect Servicio_Roo_JavaBean {
     
@@ -207,6 +209,24 @@ privileged aspect Servicio_Roo_JavaBean {
      */
     public void Servicio.setPrestador(Prestador prestador) {
         this.prestador = prestador;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return List
+     */
+    public List<CalificacionCliente> Servicio.getListadecalificaciones() {
+        return this.listadecalificaciones;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param listadecalificaciones
+     */
+    public void Servicio.setListadecalificaciones(List<CalificacionCliente> listadecalificaciones) {
+        this.listadecalificaciones = listadecalificaciones;
     }
     
 }

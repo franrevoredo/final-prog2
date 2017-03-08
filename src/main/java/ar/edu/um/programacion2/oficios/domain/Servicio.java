@@ -4,14 +4,19 @@ import org.springframework.roo.addon.javabean.annotations.RooJavaBean;
 import org.springframework.roo.addon.javabean.annotations.RooToString;
 import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.roo.classpath.operations.jsr303.RooUploadedFile;
@@ -99,6 +104,10 @@ public class Servicio {
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="prestador_id")
     private Prestador prestador;
+    
+    @ManyToMany
+    @JoinTable(name = "servicio_calificacion", joinColumns = @JoinColumn(name = "servicio_id"), inverseJoinColumns = @JoinColumn(name = "calificacion_id"))
+    private List<CalificacionCliente> listadecalificaciones;
     
 
 	/**
