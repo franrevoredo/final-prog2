@@ -21,7 +21,13 @@ import javax.validation.constraints.NotNull;
 @RooEquals(isJpaEntity = true)
 public class Localidad {
 
-    /**
+    public Localidad(String nombre, String descripcion) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+	}
+
+	/**
      * TODO Auto-generated attribute documentation
      *
      */

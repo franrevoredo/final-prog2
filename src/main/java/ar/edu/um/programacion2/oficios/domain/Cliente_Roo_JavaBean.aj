@@ -4,6 +4,9 @@
 package ar.edu.um.programacion2.oficios.domain;
 
 import ar.edu.um.programacion2.oficios.domain.Cliente;
+import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.reference.Localidad;
+import java.util.Set;
 
 privileged aspect Cliente_Roo_JavaBean {
     
@@ -77,6 +80,42 @@ privileged aspect Cliente_Roo_JavaBean {
      */
     public void Cliente.setDomicilio2(String domicilio2) {
         this.domicilio2 = domicilio2;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Localidad
+     */
+    public Localidad Cliente.getLocalidad() {
+        return this.localidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param localidad
+     */
+    public void Cliente.setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Set
+     */
+    public Set<Servicio> Cliente.getFavoritos() {
+        return this.favoritos;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param favoritos
+     */
+    public void Cliente.setFavoritos(Set<Servicio> favoritos) {
+        this.favoritos = favoritos;
     }
     
 }

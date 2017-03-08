@@ -100,4 +100,13 @@ public class Servicio {
     @JoinColumn(name="prestador_id")
     private Prestador prestador;
     
+
+	/**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+        return getNombre() + " (" + getPrestador() + ")";
+    }
 }

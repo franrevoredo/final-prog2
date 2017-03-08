@@ -70,6 +70,12 @@ privileged aspect ClienteRepositoryImpl_Roo_Jpa_Repository_Impl {
     public static final String ClienteRepositoryImpl.DOMICILIO_2 = "domicilio2";
     
     /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String ClienteRepositoryImpl.LOCALIDAD = "localidad";
+    
+    /**
      * TODO Auto-generated method documentation
      * 
      * @param globalSearch
@@ -82,7 +88,7 @@ privileged aspect ClienteRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Cliente> query = from(cliente);
         
-        Path<?>[] paths = new Path<?>[] {cliente.username,cliente.password,cliente.email,cliente.telefono,cliente.nombre,cliente.apellido,cliente.domicilio,cliente.domicilio2};        
+        Path<?>[] paths = new Path<?>[] {cliente.username,cliente.password,cliente.email,cliente.telefono,cliente.nombre,cliente.apellido,cliente.domicilio,cliente.domicilio2,cliente.localidad};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
@@ -93,7 +99,8 @@ privileged aspect ClienteRepositoryImpl_Roo_Jpa_Repository_Impl {
 			.map(NOMBRE, cliente.nombre)
 			.map(APELLIDO, cliente.apellido)
 			.map(DOMICILIO, cliente.domicilio)
-			.map(DOMICILIO_2, cliente.domicilio2);
+			.map(DOMICILIO_2, cliente.domicilio2)
+			.map(LOCALIDAD, cliente.localidad);
         
         applyPagination(pageable, query, mapping);
         applyOrderById(query);

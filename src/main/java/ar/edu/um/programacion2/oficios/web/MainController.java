@@ -1,5 +1,19 @@
 package ar.edu.um.programacion2.oficios.web;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleafMainController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import ar.edu.um.programacion2.oficios.domain.Cliente;
+import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.reference.Localidad;
+import ar.edu.um.programacion2.oficios.service.impl.LocalidadServiceImpl;
+import ar.edu.um.programacion2.oficios.service.impl.ServicioServiceImpl;
 
 /**
  * = MainController
@@ -9,4 +23,24 @@ import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleafM
  */
 @RooThymeleafMainController
 public class MainController {
+	
+	@Autowired
+	LocalidadServiceImpl localidadService;
+	
+	@Autowired
+	ServicioServiceImpl servicioService;
+	
+    @GetMapping("/testuser")
+    public String testUser() {
+    	
+    	Cliente c1 = new Cliente("Juan", "Perez", "Niggas 123", localidadService.findOne((long) 2));
+    	
+    	Set<Servicio> favoritos = new HashSet<Servicio>(servicioService.findAll());
+    	
+    	c1.setFavoritos(favoritos);
+    	
+    	System.out.println(c1.toString());
+    	
+        return "index";
+    }
 }
