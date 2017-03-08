@@ -159,6 +159,27 @@ privileged aspect PersonaServiceImpl_Roo_Service_Impl {
     /**
      * TODO Auto-generated method documentation
      * 
+     * @param username
+     * @param pageable
+     * @return Page
+     */
+    public Page<Persona> PersonaServiceImpl.findByUsername(String username, Pageable pageable) {
+        return getPersonaRepository().findByUsername(username, pageable);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param username
+     * @return Long
+     */
+    public long PersonaServiceImpl.countByUsername(String username) {
+        return getPersonaRepository().countByUsername(username);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
      * @return Class
      */
     public Class<Persona> PersonaServiceImpl.getEntityType() {

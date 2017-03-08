@@ -7,6 +7,8 @@ import ar.edu.um.programacion2.oficios.reference.Persona;
 import ar.edu.um.programacion2.oficios.repository.PersonaRepository;
 import ar.edu.um.programacion2.oficios.repository.PersonaRepositoryCustom;
 import io.springlets.data.jpa.repository.DetachableJpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect PersonaRepository_Roo_Jpa_Repository {
@@ -16,5 +18,22 @@ privileged aspect PersonaRepository_Roo_Jpa_Repository {
     declare parents: PersonaRepository extends PersonaRepositoryCustom;
     
     declare @type: PersonaRepository: @Transactional(readOnly = true);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param username
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Persona> PersonaRepository.findByUsername(String username, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param username
+     * @return Long
+     */
+    public abstract long PersonaRepository.countByUsername(String username);
     
 }

@@ -92,4 +92,21 @@ privileged aspect PersonaService_Roo_Service {
      */
     public abstract Page<Persona> PersonaService.findAll(GlobalSearch globalSearch, Pageable pageable);
     
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param username
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Persona> PersonaService.findByUsername(String username, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param username
+     * @return Long
+     */
+    public abstract long PersonaService.countByUsername(String username);
+    
 }
