@@ -107,6 +107,17 @@
       <span id="categoria-error" class="help-block" data-th-if="${#fields.hasErrors('categoria')}" data-th-errors="*{categoria}">Error message.</span>
     </div>
 </div>
+<div class="form-group has-error has-feedback" data-z="9f7b385d" id="servicio-prestador-field" data-th-classappend="${#fields.hasErrors('prestador')}? 'has-error has-feedback'" data-th-class="form-group" data-th-with="collectionLink=${@linkBuilder.of('PrestadorsCollectionThymeleafController')}">
+    <label for="prestador" class="col-md-3 control-label" data-th-text="#{label_servicio_prestador}">Prestador</label>
+    <div class="col-md-6">
+      <!-- Select2 -->
+      <select data-th-field="*{prestador}" class="form-control dropdown-select-ajax" data-allow-clear="true" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}">
+          <option data-th-unless="*{prestador} == null" data-th-value="*{prestador.id}" data-th-text="*{{prestador}}" selected="selected">Prestador</option>
+      </select>
+      <span data-th-classappend="${#fields.hasErrors('prestador')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('prestador')}" aria-hidden="true"></span>
+      <span id="prestador-error" class="help-block" data-th-if="${#fields.hasErrors('prestador')}" data-th-errors="*{prestador}">Error message.</span>
+    </div>
+</div>
             </fieldset>
 
 

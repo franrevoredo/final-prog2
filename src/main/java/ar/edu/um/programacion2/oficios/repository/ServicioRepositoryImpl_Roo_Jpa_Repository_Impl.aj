@@ -64,6 +64,12 @@ privileged aspect ServicioRepositoryImpl_Roo_Jpa_Repository_Impl {
     public static final String ServicioRepositoryImpl.CATEGORIA = "categoria";
     
     /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String ServicioRepositoryImpl.PRESTADOR = "prestador";
+    
+    /**
      * TODO Auto-generated method documentation
      * 
      * @param globalSearch
@@ -76,7 +82,7 @@ privileged aspect ServicioRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Servicio> query = from(servicio);
         
-        Path<?>[] paths = new Path<?>[] {servicio.nombre,servicio.descripcion,servicio.telefono,servicio.puntaje,servicio.localidad,servicio.disponibilidad,servicio.categoria};        
+        Path<?>[] paths = new Path<?>[] {servicio.nombre,servicio.descripcion,servicio.telefono,servicio.puntaje,servicio.localidad,servicio.disponibilidad,servicio.categoria,servicio.prestador};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
@@ -86,7 +92,8 @@ privileged aspect ServicioRepositoryImpl_Roo_Jpa_Repository_Impl {
 			.map(PUNTAJE, servicio.puntaje)
 			.map(LOCALIDAD, servicio.localidad)
 			.map(DISPONIBILIDAD, servicio.disponibilidad)
-			.map(CATEGORIA, servicio.categoria);
+			.map(CATEGORIA, servicio.categoria)
+			.map(PRESTADOR, servicio.prestador);
         
         applyPagination(pageable, query, mapping);
         applyOrderById(query);

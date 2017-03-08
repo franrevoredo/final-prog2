@@ -96,4 +96,8 @@ public class Servicio {
     @JoinColumn(name="categoria_id")
     private Categoria categoria;
     
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="prestador_id")
+    private Prestador prestador;
+    
 }

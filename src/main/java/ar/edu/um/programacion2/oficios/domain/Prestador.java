@@ -29,4 +29,13 @@ public class Prestador extends Persona {
      */
     @NotNull
     private String oficio;
+
+	/**∫
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+        return getUsername() + " - " + getRazonsocial();
+    }
 }

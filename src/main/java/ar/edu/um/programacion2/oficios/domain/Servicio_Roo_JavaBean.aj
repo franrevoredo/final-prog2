@@ -3,6 +3,7 @@
 
 package ar.edu.um.programacion2.oficios.domain;
 
+import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.reference.Disponibilidad;
@@ -188,6 +189,24 @@ privileged aspect Servicio_Roo_JavaBean {
      */
     public void Servicio.setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return Prestador
+     */
+    public Prestador Servicio.getPrestador() {
+        return this.prestador;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param prestador
+     */
+    public void Servicio.setPrestador(Prestador prestador) {
+        this.prestador = prestador;
     }
     
 }
