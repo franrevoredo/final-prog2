@@ -6,6 +6,7 @@ package ar.edu.um.programacion2.oficios.config;
 import ar.edu.um.programacion2.oficios.OficiosApplication;
 import ar.edu.um.programacion2.oficios.config.SpringDataJpaDetachableRepositoryConfiguration;
 import io.springlets.data.jpa.repository.support.DetachableJpaRepositoryImpl;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
@@ -14,5 +15,7 @@ privileged aspect SpringDataJpaDetachableRepositoryConfiguration_Roo_Jpa_Reposit
     declare @type: SpringDataJpaDetachableRepositoryConfiguration: @Configuration;
     
     declare @type: SpringDataJpaDetachableRepositoryConfiguration: @EnableJpaRepositories(repositoryBaseClass = DetachableJpaRepositoryImpl.class, basePackageClasses = OficiosApplication.class);
+    
+    declare @type: SpringDataJpaDetachableRepositoryConfiguration: @EntityScan(basePackageClasses = OficiosApplication.class);
     
 }

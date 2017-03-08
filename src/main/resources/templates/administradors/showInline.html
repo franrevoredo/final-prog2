@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_administrador})}|">Show Administrador - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${administrador}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="administrador-username-field" data-z="ca9e9252">
+            	      <strong data-th-text="#{label_administrador_username}">username</strong>
+                    <span data-th-text="*{{username}}">usernameValue</span>
+         	        </li>
+                  <li id="administrador-password-field" data-z="3f5f6db2">
+            	      <strong data-th-text="#{label_administrador_password}">password</strong>
+                    <span data-th-text="*{{password}}">passwordValue</span>
+         	        </li>
+                  <li id="administrador-email-field" data-z="65850c">
+            	      <strong data-th-text="#{label_administrador_email}">email</strong>
+                    <span data-th-text="*{{email}}">emailValue</span>
+         	        </li>
+                  <li id="administrador-telefono-field" data-z="ee4ac692">
+            	      <strong data-th-text="#{label_administrador_telefono}">telefono</strong>
+                    <span data-th-text="*{{telefono}}">telefonoValue</span>
+         	        </li>
+                  <li id="administrador-avatar-field" data-z="85301eb2">
+            	      <strong data-th-text="#{label_administrador_avatar}">avatar</strong>
+                    <span data-th-text="*{{avatar}}">avatarValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

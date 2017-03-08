@@ -4,6 +4,7 @@
 package ar.edu.um.programacion2.oficios.config.jackson;
 
 import ar.edu.um.programacion2.oficios.config.jackson.DomainModelModule;
+import ar.edu.um.programacion2.oficios.domain.Administrador;
 import ar.edu.um.programacion2.oficios.domain.Calificacion;
 import ar.edu.um.programacion2.oficios.domain.CalificacionCliente;
 import ar.edu.um.programacion2.oficios.domain.CalificacionPrestador;
@@ -14,6 +15,7 @@ import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.reference.Disponibilidad;
 import ar.edu.um.programacion2.oficios.reference.Localidad;
 import ar.edu.um.programacion2.oficios.reference.Persona;
+import ar.edu.um.programacion2.oficios.web.AdministradorJsonMixin;
 import ar.edu.um.programacion2.oficios.web.CalificacionClienteJsonMixin;
 import ar.edu.um.programacion2.oficios.web.CalificacionJsonMixin;
 import ar.edu.um.programacion2.oficios.web.CalificacionPrestadorJsonMixin;
@@ -40,6 +42,7 @@ privileged aspect DomainModelModule_Roo_DomainModelModule {
     public DomainModelModule.new() {
         // Mixin registration
         
+        setMixInAnnotation(Administrador.class, AdministradorJsonMixin.class);
         setMixInAnnotation(Calificacion.class, CalificacionJsonMixin.class);
         setMixInAnnotation(CalificacionCliente.class, CalificacionClienteJsonMixin.class);
         setMixInAnnotation(CalificacionPrestador.class, CalificacionPrestadorJsonMixin.class);
