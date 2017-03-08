@@ -65,4 +65,10 @@ public class MainController {
     	 return new ModelAndView("redirect:/clientes/" + user.getId());
     }
     
+    @GetMapping("/register")
+    public String register(Model model) {
+    	 return "register";
+    }
+    
+    
 }

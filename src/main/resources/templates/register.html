@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+<head id="head">
+
+<title>Registrarse</title>
+
+</head>
+
+<body id="body">
+
+	<header role="banner">
+		<!-- Content replaced by layout of the page displayed -->
+	</header>
+
+	<!--CONTAINER-->
+	<div class="container bg-container">
+		<!-- CONTENT -->
+		<!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+		<section data-layout-fragment="content">
+			<div class="container-fluid content text-center" style="min-height: 10px;">
+
+				<!-- CONTENT -->
+				<h1>Registrarse</h1>
+
+				<div id="mainEntityFieldSet">
+					<p>
+						<a th:href="@{/clientes/create-form}" class="btn btn-primary"
+							role="button">Registrase como Cliente</a>
+					</p>
+					<p>
+						<a th:href="@{/prestadors/create-form}" class="btn btn-info"
+							role="button">Registrase como Prestador</a>
+					</p>
+				</div>
+			</div>
+
+		</section>
+		<!-- /CONTENT -->
+	</div>
+	<!-- /CONTAINER -->
+
+	<footer class="container">
+		<!-- Content replaced by layout of the page displayed -->
+	</footer>
+
+	<!-- JavaScript
+  ================================================== -->
+	<!-- Placed at the end of the document so that the pages load faster -->
+	<!-- JavaScript loaded by layout of the page displayed -->
+	<!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+	<div data-layout-fragment="javascript"></div>
+
+</body>
+
+</html>
