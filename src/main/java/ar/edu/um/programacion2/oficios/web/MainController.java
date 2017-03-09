@@ -109,6 +109,12 @@ public class MainController {
 	public String register(Model model) {
 		return "register";
 	}
+	
+	@GetMapping("/nuevo-servicio")
+	public String newServicio(Model model) {
+        model.addAttribute("servicio", new Servicio());
+		return "servicios/create";
+	}
 
 	@GetMapping("/ver-servicio/{id}")
 	public ModelAndView verServicio(@PathVariable(value = "id") long id, Model model) {

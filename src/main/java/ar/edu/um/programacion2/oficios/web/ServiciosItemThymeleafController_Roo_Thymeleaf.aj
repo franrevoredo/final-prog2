@@ -127,8 +127,6 @@ privileged aspect ServiciosItemThymeleafController_Roo_Thymeleaf {
         return servicio;
     }
     
-
-    
     /**
      * TODO Auto-generated method documentation
      * 

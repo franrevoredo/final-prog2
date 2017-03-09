@@ -65,7 +65,7 @@ public class Localidad {
      * @return String
      */
     public String toString() {
-    	return nombre;
+    	return getNombre();
     }
     
     public String getMapString(){
