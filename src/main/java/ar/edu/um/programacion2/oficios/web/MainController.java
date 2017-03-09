@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleafMainController;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -69,6 +70,4 @@ public class MainController {
     public String register(Model model) {
     	 return "register";
     }
-    
-    
 }

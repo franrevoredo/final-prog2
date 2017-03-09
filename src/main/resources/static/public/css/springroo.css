@@ -8,12 +8,12 @@ body {
 }
 img {border: 0; max-width: 100%; outline: none;}
 a{
-  color: #6db33f;
+  color: #edc34e;
   transition: color 150ms ease;
   }
 a:focus, a:hover{
   outline: none;
-  color: #3f6824;
+  color: #987000;
   }
 .content a:hover {text-decoration: underline}
 .content a.btn-action:hover,
@@ -472,4 +472,16 @@ body.home .navbar {  margin-bottom: 0px;}
   .navbar-nav#entitiesMenuEntries {
       max-width: 50%;
   }
+}
+
+
+/* CONTAINER EXTRAS
+-------------------------------------------------------------------------------*/
+
+.no-min-height {
+	min-height: 0;
+}
+
+.container-padding {
+	padding: 50px;
 }
