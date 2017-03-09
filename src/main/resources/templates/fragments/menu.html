@@ -47,7 +47,7 @@
 							class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="/buscar-cat"
+							<li sec:authorize="hasRole('ROLE_CLIENTE')"><a href="/buscar-cat"
 								data-th-href="@{/buscar/buscar-fav}"
 								data-th-utext="#{menu_buscar_favoritos}">Favoritos</a></li>
 							<li><a href="/buscar-cat"

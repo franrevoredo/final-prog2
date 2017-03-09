@@ -18,7 +18,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-           <li sec:authorize="!hasRole('ROLE_ADMINISTRADOR')"><a th:href="@{/myprofile}"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+           <li sec:authorize="hasRole('ROLE_CLIENTE')"><a th:href="@{/myprofile}"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
            &nbsp;<span data-th-text="#{my_profile}">My Profile</span></a></li>
            <li sec:authorize="hasRole('ROLE_ADMINISTRADOR')"><a th:href="@{/admpanel}"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
            &nbsp;<span data-th-text="#{label_profile}">Admin Profile</span></a></li>
