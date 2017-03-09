@@ -73,7 +73,7 @@
 
           <div class="clearfix">
             <div class="pull-left">
-              <a id="Prestador_list" href="list.html" class="btn btn-default" data-th-title="#{label_goBack}" data-th-href="${@linkBuilder.of('PrestadorsCollectionThymeleafController').to('list')}">
+              <a id="Prestador_list" href="list.html" class="btn btn-default" data-th-title="#{label_goBack}" onclick="window.history.back()" >
   	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
   	             <span data-th-text="#{label_back}">Back</span>
   	          </a>

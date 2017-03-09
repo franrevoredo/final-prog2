@@ -32,7 +32,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/administradors/**", "/admpanel/**", "/categorias/**", "/disponibilidads/**", "/localidads/**", "/personae/**", "/clientes/**", "/prestadors/list", "/servicios/**").hasAuthority("ROLE_ADMINISTRADOR");
 		http.authorizeRequests().antMatchers("/servicios/create-form", "/calificacionprestadors/**").hasAuthority("ROLE_PRESTADOR");
-		http.authorizeRequests().antMatchers("/calificacionclientes/**").hasAuthority("ROLE_CLIENTE");
+		http.authorizeRequests().antMatchers("/calificacionclientes/**", "/ver-servicio/**", "/add-fav/**", "/ver-cliente/**", "/del-fav/**").hasAuthority("ROLE_CLIENTE");
 		http.authorizeRequests().antMatchers("/buscar/**", "/myprofile").authenticated().and().formLogin().loginPage("/login").and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
 		http.authorizeRequests().antMatchers("/public/**", "/js/**", "/webjars/**", "/", "/clientes/create-form", "/prestadors/create-form").permitAll().anyRequest().anonymous();
 		http.csrf().disable();
