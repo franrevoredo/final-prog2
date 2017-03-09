@@ -55,6 +55,6 @@ public class Disponibilidad {
      * @return String
      */
     public String toString() {
-        return franjahoraria + " - " + descripcion;
+        return franjahoraria + " (" + descripcion + ")";
     }
 }

@@ -52,7 +52,7 @@
 						<li id="servicio-localidad-field" data-z="3c00987d"><strong
 							data-th-text="#{label_servicio_localidad}">localidad</strong> <span
 							data-th-text="*{{localidad}}">localidadValue</span></li>
-						<li><img th:src="${mapstring}" width="600" height="600">
+						<li th:if="${mapstring}"><img th:src="${mapstring}" width="600" height="600">
 						</li>
 						<li id="servicio-disponibilidad-field" data-z="19c21a81"><strong
 							data-th-text="#{label_servicio_disponibilidad}">disponibilidad</strong>
@@ -70,7 +70,7 @@
 
 				<div class="clearfix">
 					<div class="pull-right">
-						<a id="Servicio_edit" href="edit.html" class="btn btn-primary"
+						<a sec:authorize="!hasRole('ROLE_CLIENTE')" id="Servicio_edit" href="edit.html" class="btn btn-primary"
 							data-th-title="#{label_goEdit}"
 							data-th-href="${@linkBuilder.of('ServiciosItemThymeleafController').to('editForm').with('servicio', servicio.id)}"
 							data-th-text="#{label_edit}">Edit</a>
