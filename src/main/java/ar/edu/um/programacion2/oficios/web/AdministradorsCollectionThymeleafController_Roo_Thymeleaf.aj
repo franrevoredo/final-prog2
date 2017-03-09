@@ -453,6 +453,9 @@ privileged aspect AdministradorsCollectionThymeleafController_Roo_Thymeleaf {
         else if (columnName.equals("telefono")) {
             builder.addColumn(getMessageSource().getMessage("label_administrador_telefono", null, "Telefono", locale), "telefono", String.class.getName(), 100);
         }
+        else if (columnName.equals("enabled")) {
+            builder.addColumn(getMessageSource().getMessage("label_administrador_enabled", null, "Enabled", locale), "enabled", Integer.class.getName(), 100);
+        }
         }
         catch (ColumnBuilderException e) {
             String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 

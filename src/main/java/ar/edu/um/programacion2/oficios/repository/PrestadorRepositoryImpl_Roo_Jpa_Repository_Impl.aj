@@ -49,6 +49,12 @@ privileged aspect PrestadorRepositoryImpl_Roo_Jpa_Repository_Impl {
      * TODO Auto-generated attribute documentation
      * 
      */
+    public static final String PrestadorRepositoryImpl.ENABLED = "enabled";
+    
+    /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
     public static final String PrestadorRepositoryImpl.RAZONSOCIAL = "razonsocial";
     
     /**
@@ -70,7 +76,7 @@ privileged aspect PrestadorRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Prestador> query = from(prestador);
         
-        Path<?>[] paths = new Path<?>[] {prestador.username,prestador.password,prestador.email,prestador.telefono,prestador.razonsocial,prestador.oficio};        
+        Path<?>[] paths = new Path<?>[] {prestador.username,prestador.password,prestador.email,prestador.telefono,prestador.enabled,prestador.razonsocial,prestador.oficio};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
@@ -78,6 +84,7 @@ privileged aspect PrestadorRepositoryImpl_Roo_Jpa_Repository_Impl {
 			.map(PASSWORD, prestador.password)
 			.map(EMAIL, prestador.email)
 			.map(TELEFONO, prestador.telefono)
+			.map(ENABLED, prestador.enabled)
 			.map(RAZONSOCIAL, prestador.razonsocial)
 			.map(OFICIO, prestador.oficio);
         

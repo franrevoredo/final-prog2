@@ -46,6 +46,12 @@ privileged aspect AdministradorRepositoryImpl_Roo_Jpa_Repository_Impl {
     public static final String AdministradorRepositoryImpl.TELEFONO = "telefono";
     
     /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String AdministradorRepositoryImpl.ENABLED = "enabled";
+    
+    /**
      * TODO Auto-generated method documentation
      * 
      * @param globalSearch
@@ -58,14 +64,15 @@ privileged aspect AdministradorRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Administrador> query = from(administrador);
         
-        Path<?>[] paths = new Path<?>[] {administrador.username,administrador.password,administrador.email,administrador.telefono};        
+        Path<?>[] paths = new Path<?>[] {administrador.username,administrador.password,administrador.email,administrador.telefono,administrador.enabled};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
 			.map(USERNAME, administrador.username)
 			.map(PASSWORD, administrador.password)
 			.map(EMAIL, administrador.email)
-			.map(TELEFONO, administrador.telefono);
+			.map(TELEFONO, administrador.telefono)
+			.map(ENABLED, administrador.enabled);
         
         applyPagination(pageable, query, mapping);
         applyOrderById(query);

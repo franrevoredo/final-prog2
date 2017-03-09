@@ -74,6 +74,14 @@
       <span id="avatar-error" class="help-block" data-th-if="${#fields.hasErrors('avatar')}" data-th-errors="*{avatar}">Error message.</span>
   </div>
 </div>
+<div class="form-group has-error has-feedback" data-z="8a1bf87f" id="prestador-enabled-field" data-th-classappend="${#fields.hasErrors('enabled')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="enabled" class="col-md-3 control-label" data-th-text="#{label_prestador_enabled}">enabled</label>
+  <div class="col-md-3">
+    <input id="enabled" name="enabled" data-th-value="*{{enabled}}" type="text" class="form-control inputmask" placeholder="enabled" data-th-placeholder="#{label_prestador_enabled}" data-toggle="tooltip" aria-describedby="enabledStatus" data-inputmask-alias="numeric" data-inputmask-digits="0" />
+      <span data-th-classappend="${#fields.hasErrors('enabled')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('enabled')}" aria-hidden="true"></span>
+      <span id="enabled-error" class="help-block" data-th-if="${#fields.hasErrors('enabled')}" data-th-errors="*{enabled}">Error message.</span>
+  </div>
+</div>
 <div class="form-group has-error has-feedback" data-z="c4a331bf" id="prestador-razonsocial-field" data-th-classappend="${#fields.hasErrors('razonsocial')}? 'has-error has-feedback'" data-th-class="form-group">
   <label for="razonsocial" class="col-md-3 control-label" data-th-text="#{label_prestador_razonsocial}">razonsocial</label>
   <div class="col-md-6">

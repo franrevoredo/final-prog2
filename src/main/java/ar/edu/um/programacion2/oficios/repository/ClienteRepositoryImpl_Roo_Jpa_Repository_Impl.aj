@@ -49,6 +49,12 @@ privileged aspect ClienteRepositoryImpl_Roo_Jpa_Repository_Impl {
      * TODO Auto-generated attribute documentation
      * 
      */
+    public static final String ClienteRepositoryImpl.ENABLED = "enabled";
+    
+    /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
     public static final String ClienteRepositoryImpl.NOMBRE = "nombre";
     
     /**
@@ -88,7 +94,7 @@ privileged aspect ClienteRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Cliente> query = from(cliente);
         
-        Path<?>[] paths = new Path<?>[] {cliente.username,cliente.password,cliente.email,cliente.telefono,cliente.nombre,cliente.apellido,cliente.domicilio,cliente.domicilio2,cliente.localidad};        
+        Path<?>[] paths = new Path<?>[] {cliente.username,cliente.password,cliente.email,cliente.telefono,cliente.enabled,cliente.nombre,cliente.apellido,cliente.domicilio,cliente.domicilio2,cliente.localidad};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
@@ -96,6 +102,7 @@ privileged aspect ClienteRepositoryImpl_Roo_Jpa_Repository_Impl {
 			.map(PASSWORD, cliente.password)
 			.map(EMAIL, cliente.email)
 			.map(TELEFONO, cliente.telefono)
+			.map(ENABLED, cliente.enabled)
 			.map(NOMBRE, cliente.nombre)
 			.map(APELLIDO, cliente.apellido)
 			.map(DOMICILIO, cliente.domicilio)

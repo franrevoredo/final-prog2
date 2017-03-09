@@ -453,6 +453,9 @@ privileged aspect ClientesCollectionThymeleafController_Roo_Thymeleaf {
         else if (columnName.equals("telefono")) {
             builder.addColumn(getMessageSource().getMessage("label_cliente_telefono", null, "Telefono", locale), "telefono", String.class.getName(), 100);
         }
+        else if (columnName.equals("enabled")) {
+            builder.addColumn(getMessageSource().getMessage("label_cliente_enabled", null, "Enabled", locale), "enabled", Integer.class.getName(), 100);
+        }
         else if (columnName.equals("nombre")) {
             builder.addColumn(getMessageSource().getMessage("label_cliente_nombre", null, "Nombre", locale), "nombre", String.class.getName(), 100);
         }

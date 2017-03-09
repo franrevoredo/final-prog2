@@ -453,6 +453,9 @@ privileged aspect PrestadorsCollectionThymeleafController_Roo_Thymeleaf {
         else if (columnName.equals("telefono")) {
             builder.addColumn(getMessageSource().getMessage("label_prestador_telefono", null, "Telefono", locale), "telefono", String.class.getName(), 100);
         }
+        else if (columnName.equals("enabled")) {
+            builder.addColumn(getMessageSource().getMessage("label_prestador_enabled", null, "Enabled", locale), "enabled", Integer.class.getName(), 100);
+        }
         else if (columnName.equals("razonsocial")) {
             builder.addColumn(getMessageSource().getMessage("label_prestador_razonsocial", null, "Razonsocial", locale), "razonsocial", String.class.getName(), 100);
         }
