@@ -215,7 +215,7 @@
 								data-th-utext="#{label_list_entity(#{label_prestador_plural})}">List
 									Prestador</a></li>
 						</ul></li>
-					<li sec:authorize="hasRole('ROLE_PRESTADOR')" class="dropdown"
+					<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')" class="dropdown"
 						id="servicio-entry" data-z="7306e6e8"><a href="#"
 						class="dropdown-toggle" data-toggle="dropdown" role="button"
 						aria-haspopup="true" aria-expanded="false"
@@ -230,6 +230,10 @@
 								data-th-utext="#{label_list_entity(#{label_servicio_plural})}">List
 									Servicio</a></li>
 						</ul></li>
+						<li sec:authorize="hasRole('ROLE_PRESTADOR')" ><a href="/nuevo-servicio"
+								data-th-href="@{/nuevo-servicio}"
+								data-th-utext="#{nuevo_servicio}">Create
+									Servicio</a></li>
 				</ul>
 
 				<!-- Language select -->
