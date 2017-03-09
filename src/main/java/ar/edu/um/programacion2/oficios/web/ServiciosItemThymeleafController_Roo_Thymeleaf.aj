@@ -127,18 +127,7 @@ privileged aspect ServiciosItemThymeleafController_Roo_Thymeleaf {
         return servicio;
     }
     
-    /**
-     * TODO Auto-generated method documentation
-     * 
-     * @param servicio
-     * @param model
-     * @return ModelAndView
-     */
-    @GetMapping(name = "show")
-    public ModelAndView ServiciosItemThymeleafController.show(@ModelAttribute Servicio servicio, Model model) {
-        model.addAttribute("servicio", servicio);
-        return new ModelAndView("servicios/show");
-    }
+
     
     /**
      * TODO Auto-generated method documentation
