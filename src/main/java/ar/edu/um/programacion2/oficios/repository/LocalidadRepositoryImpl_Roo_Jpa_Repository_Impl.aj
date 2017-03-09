@@ -34,6 +34,12 @@ privileged aspect LocalidadRepositoryImpl_Roo_Jpa_Repository_Impl {
     public static final String LocalidadRepositoryImpl.DESCRIPCION = "descripcion";
     
     /**
+     * TODO Auto-generated attribute documentation
+     * 
+     */
+    public static final String LocalidadRepositoryImpl.GOOGLE_MAPS_STRING = "googleMapsString";
+    
+    /**
      * TODO Auto-generated method documentation
      * 
      * @param globalSearch
@@ -46,12 +52,13 @@ privileged aspect LocalidadRepositoryImpl_Roo_Jpa_Repository_Impl {
         
         JPQLQuery<Localidad> query = from(localidad);
         
-        Path<?>[] paths = new Path<?>[] {localidad.nombre,localidad.descripcion};        
+        Path<?>[] paths = new Path<?>[] {localidad.nombre,localidad.descripcion,localidad.googleMapsString};        
         applyGlobalSearch(globalSearch, query, paths);
         
         AttributeMappingBuilder mapping = buildMapper()
 			.map(NOMBRE, localidad.nombre)
-			.map(DESCRIPCION, localidad.descripcion);
+			.map(DESCRIPCION, localidad.descripcion)
+			.map(GOOGLE_MAPS_STRING, localidad.googleMapsString);
         
         applyPagination(pageable, query, mapping);
         applyOrderById(query);

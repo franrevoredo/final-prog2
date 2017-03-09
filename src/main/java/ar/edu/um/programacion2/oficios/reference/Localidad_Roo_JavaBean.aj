@@ -79,4 +79,22 @@ privileged aspect Localidad_Roo_JavaBean {
         this.descripcion = descripcion;
     }
     
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String Localidad.getGoogleMapsString() {
+        return this.googleMapsString;
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param googleMapsString
+     */
+    public void Localidad.setGoogleMapsString(String googleMapsString) {
+        this.googleMapsString = googleMapsString;
+    }
+    
 }

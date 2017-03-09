@@ -134,19 +134,6 @@ privileged aspect LocalidadsItemThymeleafController_Roo_Thymeleaf {
      * @param model
      * @return ModelAndView
      */
-    @GetMapping(name = "show")
-    public ModelAndView LocalidadsItemThymeleafController.show(@ModelAttribute Localidad localidad, Model model) {
-        model.addAttribute("localidad", localidad);
-        return new ModelAndView("localidads/show");
-    }
-    
-    /**
-     * TODO Auto-generated method documentation
-     * 
-     * @param localidad
-     * @param model
-     * @return ModelAndView
-     */
     @GetMapping(value = "/inline", name = "showInline")
     public ModelAndView LocalidadsItemThymeleafController.showInline(@ModelAttribute Localidad localidad, Model model) {
         model.addAttribute("localidad", localidad);

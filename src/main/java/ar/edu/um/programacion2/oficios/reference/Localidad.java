@@ -55,6 +55,10 @@ public class Localidad {
      */
     private String descripcion;
 
+    
+    private String googleMapsString;
+    
+    
 	/**
      * TODO Auto-generated method documentation
      * 
@@ -62,5 +66,9 @@ public class Localidad {
      */
     public String toString() {
     	return nombre;
+    }
+    
+    public String getMapString(){
+    	return "http://maps.googleapis.com/maps/api/staticmap?" + getGoogleMapsString() + "&key=AIzaSyBcHKgGm4tc6GowGP7Lhn_dzH9gRuxhJEo";
     }
 }

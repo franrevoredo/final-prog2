@@ -447,6 +447,9 @@ privileged aspect LocalidadsCollectionThymeleafController_Roo_Thymeleaf {
         else if (columnName.equals("descripcion")) {
             builder.addColumn(getMessageSource().getMessage("label_localidad_descripcion", null, "Descripcion", locale), "descripcion", String.class.getName(), 100);
         }
+        else if (columnName.equals("googleMapsString")) {
+            builder.addColumn(getMessageSource().getMessage("label_localidad_googlemapsstring", null, "Google Maps String", locale), "googleMapsString", String.class.getName(), 100);
+        }
         }
         catch (ColumnBuilderException e) {
             String errorMessage = getMessageSource().getMessage("error_exportingErrorException", 

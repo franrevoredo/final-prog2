@@ -72,6 +72,14 @@
       <span id="descripcion-error" class="help-block" data-th-if="${#fields.hasErrors('descripcion')}" data-th-errors="*{descripcion}">Error message.</span>
   </div>
 </div>
+<div class="form-group has-error has-feedback" data-z="a7719b5e" id="localidad-googlemapsstring-field" data-th-classappend="${#fields.hasErrors('googleMapsString')}? 'has-error has-feedback'" data-th-class="form-group">
+  <label for="googleMapsString" class="col-md-3 control-label" data-th-text="#{label_localidad_googlemapsstring}">googleMapsString</label>
+  <div class="col-md-6">
+    <input id="googleMapsString" name="googleMapsString" data-th-value="*{{googleMapsString}}" type="text" class="form-control" placeholder="googleMapsString" data-th-placeholder="#{label_localidad_googlemapsstring}" data-toggle="tooltip" aria-describedby="googleMapsStringStatus" />
+      <span data-th-classappend="${#fields.hasErrors('googleMapsString')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('googleMapsString')}" aria-hidden="true"></span>
+      <span id="googleMapsString-error" class="help-block" data-th-if="${#fields.hasErrors('googleMapsString')}" data-th-errors="*{googleMapsString}">Error message.</span>
+  </div>
+</div>
              </fieldset>
 
 
