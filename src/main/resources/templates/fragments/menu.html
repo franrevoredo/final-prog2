@@ -42,15 +42,22 @@
 					<li sec:authorize="isAuthenticated()" class="dropdown"
 						id="buscar-entry"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false" data-th-utext="#{label_menu_entry(#{menu_buscar})}">Buscar
-							Por<span class="caret"></span>
+						aria-expanded="false"
+						data-th-utext="#{label_menu_entry(#{menu_buscar})}">Buscar Por<span
+							class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a href="/buscar-cat" data-th-href="@{/buscar/buscar-cat}"
+							<li><a href="/buscar-cat"
+								data-th-href="@{/buscar/buscar-fav}"
+								data-th-utext="#{menu_buscar_favoritos}">Favoritos</a></li>
+							<li><a href="/buscar-cat"
+								data-th-href="@{/buscar/buscar-cat}"
 								data-th-utext="#{menu_buscar_categoria}">Categoría</a></li>
-							<li><a href="/buscar-cat" data-th-href="@{/buscar/buscar-nom}"
+							<li><a href="/buscar-cat"
+								data-th-href="@{/buscar/buscar-nom}"
 								data-th-utext="#{menu_buscar_nombre}">Nombre</a></li>
-							<li><a href="/buscar-cat" data-th-href="@{/buscar/buscar-tel}"
+							<li><a href="/buscar-cat"
+								data-th-href="@{/buscar/buscar-tel}"
 								data-th-utext="#{menu_buscar_telefono}">Telefono</a></li>
 						</ul></li>
 					<li sec:authorize="hasRole('ROLE_ADMINISTRADOR')" class="dropdown"

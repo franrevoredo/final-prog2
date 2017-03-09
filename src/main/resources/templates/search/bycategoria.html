@@ -90,8 +90,8 @@
 						<div class="form-group">
 							<label for="categoria-name"
 								data-th-text="#{menu_buscar_categoria}">Categoría</label> <select
-								th:field="*{categorias}" class="form-control"
-								id="categoria-name" name="categoria-name">
+								class="form-control"
+								id="categoria-name" th:name="categoria">
 								<option th:each="categoria : ${categorias}"
 									th:value="${categoria.id}" th:text="${categoria.nombre}">Categoría</option>
 							</select>
