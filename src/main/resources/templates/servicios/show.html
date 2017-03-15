@@ -43,9 +43,6 @@
 						<li id="servicio-logo-field" data-z="54220f01"><strong
 							data-th-text="#{label_servicio_logo}">logo</strong> <span
 							data-th-text="*{{logo}}">logoValue</span></li>
-						<li id="servicio-telefono-field" data-z="f1acb8e1"><strong
-							data-th-text="#{label_servicio_telefono}">telefono</strong> <span
-							data-th-text="*{{telefono}}">telefonoValue</span></li>
 						<li id="servicio-puntaje-field" data-z="9c8f9efd"><strong
 							data-th-text="#{label_servicio_puntaje}">puntaje</strong> <span
 							data-th-text="*{{puntaje}}">puntajeValue</span></li>
@@ -74,6 +71,9 @@
 							data-th-title="#{label_goEdit}"
 							data-th-href="${@linkBuilder.of('ServiciosItemThymeleafController').to('editForm').with('servicio', servicio.id)}"
 							data-th-text="#{label_edit}">Edit</a>
+						<a sec:authorize="hasRole('ROLE_CLIENTE')" id="Servicio_contratar" href="#" class="btn btn-primary"
+							data-th-href="@{/pedir-servicio/{id}(id=*{{id}})}"
+							data-th-text="#{label_contactar}">Contactar</a>
 					</div>
 					<div class="pull-left">
 						<a id="Servicio_list" href="list.html" class="btn btn-default"
