@@ -41,7 +41,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/nuevo-servicio", "/calificacionprestadors/**", "/servicios/**")
 				.hasAuthority("ROLE_PRESTADOR");
 		http.authorizeRequests()
-				.antMatchers("/calificacionclientes/**", "/add-fav/**", "/ver-cliente/**", "/del-fav/**")
+				.antMatchers("/calificacionclientes/**", "/add-fav/**", "/ver-cliente/**", "/del-fav/**", "/pedir-servicio/**")
 				.hasAuthority("ROLE_CLIENTE");
 		http.authorizeRequests().antMatchers("/buscar/**", "/myprofile").authenticated().and().formLogin()
 				.loginPage("/login").and().logout().logoutUrl("/logout").logoutSuccessUrl("/");

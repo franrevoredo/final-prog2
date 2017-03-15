@@ -20,13 +20,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.um.programacion2.oficios.domain.Cliente;
+import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.helper.MailClient;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
+import ar.edu.um.programacion2.oficios.reference.Historial;
 import ar.edu.um.programacion2.oficios.reference.Localidad;
 import ar.edu.um.programacion2.oficios.reference.Persona;
 import ar.edu.um.programacion2.oficios.service.impl.CategoriaServiceImpl;
 import ar.edu.um.programacion2.oficios.service.impl.ClienteServiceImpl;
+import ar.edu.um.programacion2.oficios.service.impl.HistorialServiceImpl;
 import ar.edu.um.programacion2.oficios.service.impl.LocalidadServiceImpl;
 import ar.edu.um.programacion2.oficios.service.impl.PersonaServiceImpl;
 import ar.edu.um.programacion2.oficios.service.impl.ServicioServiceImpl;
@@ -58,6 +61,8 @@ public class MainController {
 	@Autowired
     private MailClient mailClient;
 
+	@Autowired
+	HistorialServiceImpl historialService;
 
 
 	@GetMapping("/testuser")
@@ -122,6 +127,33 @@ public class MainController {
 		model.addAttribute("mapstring", servicio.getLocalidad().getMapString());
 		return new ModelAndView("servicios/show");
 	}
+	
+	@GetMapping("/pedir-servicio/{id}")
+	public ModelAndView pedirServicio(@PathVariable(value = "id") long id, Model model, Principal principal, Pageable pageable) {
+		Servicio servicio = servicioService.findOne(id);
+		Prestador prestador = servicio.getPrestador();
+		Cliente current = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
+		
+		String body = "El cliente " + current.getUsername() + " pidió contactarte. Su número de telefono es " + current.getTelefono() + ". \nGracias.";
+		
+		mailClient.prepareAndSend(prestador.getEmail(), "Solicitud de Servicio", body);
+		
+		body = "Solicitaste el servicio " + servicio.getNombre() + " del prestador " + prestador.getUsername() + ". Su numero de telefono es " + servicio.getTelefono() + ". \nGracias.";
+		
+		mailClient.prepareAndSend(current.getEmail(), "Solicitud de Servicio", body);
+		
+		Historial historial = new Historial();
+		
+		historial.setCliente(current);
+		historial.setServicio(servicio);
+		
+		historialService.save(historial);
+
+		model.addAttribute("servicio", servicio.getNombre());
+		model.addAttribute("tumail", current.getEmail());
+		
+		return new ModelAndView("pedirservicio");
+	}
 
 	@GetMapping("/ver-cliente/{id}")
 	public ModelAndView verCliente(@PathVariable(value = "id") long id, Model model, Principal principal,
@@ -135,4 +167,7 @@ public class MainController {
 		model.addAttribute("cliente", cliente);
 		return new ModelAndView("clientes/show");
 	}
+	
+	
+	
 }
