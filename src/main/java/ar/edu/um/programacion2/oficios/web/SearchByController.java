@@ -1,6 +1,7 @@
 package ar.edu.um.programacion2.oficios.web;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ar.edu.um.programacion2.oficios.domain.Cliente;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.helper.StringHelper;
 import ar.edu.um.programacion2.oficios.service.impl.CategoriaServiceImpl;
 import ar.edu.um.programacion2.oficios.service.impl.ClienteServiceImpl;
 import ar.edu.um.programacion2.oficios.service.impl.LocalidadServiceImpl;
@@ -43,6 +45,11 @@ public class SearchByController {
 		return "search/bycategoria";
 	}
 	
+	@GetMapping("/buscar-nom")
+	public String buscarNom(Model model) {
+		return "search/bynombre";
+	}
+	
 	@GetMapping("/buscar-fav")
 	public String buscarFav(Model model, Principal principal, Pageable pageable) {
 		Cliente user = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
@@ -62,4 +69,24 @@ public class SearchByController {
 
 		return "search-result";
 	}
+	
+	@GetMapping("/buscar-nom/term")
+	public String buscarNom(Model model, @RequestParam("nombre") String nombre, Pageable pageable) {
+		List<Servicio> servicios = servicioService.findAll();
+		List<Servicio> listaDeServicio = new ArrayList<Servicio>();
+		
+		String nombre_curated = StringHelper.rmEspeciales(nombre.toLowerCase());
+		for(Servicio servicio : servicios) {
+			String nombre_servicio = StringHelper.rmEspeciales(servicio.getNombre().toLowerCase());
+			System.out.println("\n " + nombre_curated + " " + nombre_servicio);
+			if(nombre_servicio.contains(nombre_curated)) {
+				listaDeServicio.add(servicio);
+			}
+		}
+		
+		model.addAttribute("searchby", "Nombre");
+		model.addAttribute("serviciolist", listaDeServicio);
+		return "search-result";
+	}
+	
 }

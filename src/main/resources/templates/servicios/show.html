@@ -34,6 +34,7 @@
 						<li id="servicio-nombre-field" data-z="15c04ac1"><strong
 							data-th-text="#{label_servicio_nombre}">nombre</strong> <span
 							data-th-text="*{{nombre}}">nombreValue</span><span class="text-left"> <a
+								sec:authorize="hasRole('ROLE_CLIENTE')"
 								data-th-href="@{/add-fav/{id}(id=*{{id}})}"><span
 									class="glyphicon glyphicon-heart" aria-hidden="true"
 									style="font-size: 20px;"></span></a></span></li>
@@ -67,7 +68,7 @@
 
 				<div class="clearfix">
 					<div class="pull-right">
-						<a sec:authorize="!hasRole('ROLE_CLIENTE')" id="Servicio_edit" href="edit.html" class="btn btn-primary"
+						<a sec:authorize="hasAnyRole('ROLE_PRESTADOR','ROLE_ADMINISTRADOR')" id="Servicio_edit" href="edit.html" class="btn btn-primary"
 							data-th-title="#{label_goEdit}"
 							data-th-href="${@linkBuilder.of('ServiciosItemThymeleafController').to('editForm').with('servicio', servicio.id)}"
 							data-th-text="#{label_edit}">Edit</a>
@@ -78,7 +79,7 @@
 					<div class="pull-left">
 						<a id="Servicio_list" href="list.html" class="btn btn-default"
 							data-th-title="#{label_goBack}"
-							data-th-href="${@linkBuilder.of('ServiciosCollectionThymeleafController').to('list')}">
+							onclick="window.history.back()">
 							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 							<span data-th-text="#{label_back}">Back</span>
 						</a>
