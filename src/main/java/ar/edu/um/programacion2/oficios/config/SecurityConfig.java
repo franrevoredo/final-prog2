@@ -48,7 +48,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/public/**", "/js/**", "/webjars/**", "/", "/clientes/create-form",
 						"/prestadors/create-form", "/ver-servicio/**", "/categorias/s2", "/disponibilidads/s2",
-						"/localidads/s2")
+						"/localidads/s2", "/testuser")
 				.permitAll().anyRequest().anonymous();
 		http.csrf().disable();
 	}

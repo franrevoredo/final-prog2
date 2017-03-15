@@ -7,6 +7,9 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Pageable;
+import org.springframework.mail.MailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleafMainController;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.um.programacion2.oficios.domain.Cliente;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
+import ar.edu.um.programacion2.oficios.helper.MailClient;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.reference.Localidad;
 import ar.edu.um.programacion2.oficios.reference.Persona;
@@ -50,22 +54,17 @@ public class MainController {
 
 	@Autowired
 	ClienteServiceImpl clienteService;
+	
+	@Autowired
+    private MailClient mailClient;
+
+
 
 	@GetMapping("/testuser")
-	public String testUser(Pageable pageable) {
+	public String testUser(Pageable pageable, Principal principal) {
 
-		Cliente c1 = new Cliente("Juan", "Perez", "Niggas 123", localidadService.findOne((long) 2));
-
-		Set<Servicio> favoritos = new HashSet<Servicio>(servicioService.findAll());
-
-		c1.setFavoritos(favoritos);
-
-		System.out.println(servicioService
-				.findByCategoria(catService.findByNombre("Fontanería", pageable).getContent().get(0), pageable)
-				.getContent());
-
-		// System.out.println(c1.toString());
-
+		mailClient.prepareAndSend("francisco.r.89@gmail.com", "Niggas", "Sos un zapato");
+		
 		return "index";
 	}
 
