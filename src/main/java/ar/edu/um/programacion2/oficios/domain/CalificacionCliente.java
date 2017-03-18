@@ -18,6 +18,13 @@ import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
 @RooJpaEntity
 public class CalificacionCliente extends Calificacion {
 	
+	CalificacionCliente() { }
+	
+	public CalificacionCliente(Cliente autor, Servicio servicio) {
+		this.autor = autor;
+		this.servicio = servicio;
+	}
+	
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="cliente_id")
     private Cliente autor;

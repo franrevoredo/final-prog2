@@ -2,7 +2,7 @@
 <html lang="en" data-layout-decorate="~{layouts/default-layout}">
   <head id="head">
 
-    <title data-th-text="#{label_create_entity(#{label_calificacioncliente})}">
+    <title data-th-text="#{calificacioncliente_titulo}">
       Create CalificacionCliente - oficios - SpringRoo Application</title>
 
     <!-- DateTimePicker -->
@@ -26,7 +26,7 @@
       <section data-layout-fragment="content">
         <div class="container-fluid content" data-th-with="collectionLink=${@linkBuilder.of('CalificacionClientesCollectionThymeleafController')}">
 
-          <h1 data-th-text="#{label_create_entity(#{label_calificacioncliente})}">Create CalificacionCliente</h1>
+          <h1 data-th-text="#{calificacioncliente_titulo}">Create CalificacionCliente</h1>
 
           <!-- FORM -->
           <form class="form-horizontal validate" method="POST" data-th-object="${calificacionCliente}" data-th-action="@{${collectionLink.to('create').with('calificacionCliente', calificacionCliente.id)}}">
@@ -37,7 +37,7 @@
 <div class="form-group has-error has-feedback" data-z="f89a0e8e" id="calificacioncliente-comentario-field" data-th-classappend="${#fields.hasErrors('comentario')}? 'has-error has-feedback'" data-th-class="form-group">
   <label for="comentario" class="col-md-3 control-label" data-th-text="#{label_calificacioncliente_comentario}">comentario</label>
   <div class="col-md-6">
-    <input id="comentario" name="comentario" data-th-value="*{{comentario}}" type="text" class="form-control" placeholder="comentario" data-th-placeholder="#{label_calificacioncliente_comentario}" data-toggle="tooltip" aria-describedby="comentarioStatus" required="required" />
+    <textarea id="comentario" rows="5" maxlength="250" name="comentario" data-th-value="*{{comentario}}" class="form-control" placeholder="comentario" data-th-placeholder="#{label_calificacioncliente_comentario}" data-toggle="tooltip" aria-describedby="comentarioStatus" required="required"></textarea>
       <span data-th-classappend="${#fields.hasErrors('comentario')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('comentario')}" aria-hidden="true"></span>
       <span id="comentario-error" class="help-block" data-th-if="${#fields.hasErrors('comentario')}" data-th-errors="*{comentario}">Error message.</span>
   </div>
@@ -57,7 +57,7 @@
     <label for="autor" class="col-md-3 control-label" data-th-text="#{label_calificacioncliente_autor}">Cliente</label>
     <div class="col-md-6">
       <!-- Select2 -->
-      <select data-th-field="*{autor}" class="form-control dropdown-select-ajax" data-allow-clear="true" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}">
+      <select disabled data-th-field="*{autor}" class="form-control dropdown-select-ajax" data-allow-clear="true" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}">
           <option data-th-unless="*{autor} == null" data-th-value="*{autor.id}" data-th-text="*{{autor}}" selected="selected">Cliente</option>
       </select>
       <span data-th-classappend="${#fields.hasErrors('autor')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('autor')}" aria-hidden="true"></span>
@@ -68,7 +68,7 @@
     <label for="servicio" class="col-md-3 control-label" data-th-text="#{label_calificacioncliente_servicio}">Servicio</label>
     <div class="col-md-6">
       <!-- Select2 -->
-      <select data-th-field="*{servicio}" class="form-control dropdown-select-ajax" data-allow-clear="true" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}">
+      <select disabled data-th-field="*{servicio}" class="form-control dropdown-select-ajax" data-allow-clear="true" data-data-ajax--url="${collectionLink.to('select2')}" data-ajax--cache="true" data-ajax--delay="250" data-ajax--data-type="json" data-data-placeholder="#{info_select_an_option}">
           <option data-th-unless="*{servicio} == null" data-th-value="*{servicio.id}" data-th-text="*{{servicio}}" selected="selected">Servicio</option>
       </select>
       <span data-th-classappend="${#fields.hasErrors('servicio')}? 'glyphicon glyphicon-remove form-control-feedback'" class="glyphicon glyphicon-remove form-control-feedback" data-th-if="${#fields.hasErrors('servicio')}" aria-hidden="true"></span>
@@ -82,7 +82,7 @@
               <div class="form-group">
                 <div class="col-md-9 col-md-offset-3">
                     <button type="submit" class="btn btn-primary" data-th-text="#{label_save}">Save</button>
-                    <button type="reset" class="btn btn-default" onclick="location.href='list.html'" data-th-onclick="'location.href=\'' + @{${collectionLink.to('list')}} + '\''" data-th-text="#{label_reset}">Cancel</button>
+                    <button type="reset" class="btn btn-default" onclick="window.history.back()" data-th-text="#{label_reset}">Cancel</button>
                 </div>
               </div>
 

@@ -75,6 +75,6 @@ public class Cliente extends Persona {
      * @return String
      */
     public String toString() {
-        return getNombre() + " - " + getUsername() + " - " + getFavoritos();
+        return getNombre() + " " + getApellido() + " (" + getUsername() + ")";
     }
 }
