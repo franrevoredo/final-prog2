@@ -63,3 +63,7 @@ service --entity ~.reference.Historial
 // Spring Roo 2.0.0.RC1 [rev 28015e3] log opened at 2017-03-18 04:56:19
 finder add --entity ~.domain.Servicio --name findByPrestador
 // Spring Roo 2.0.0.RC1 [rev 28015e3] log closed at 2017-03-18 05:06:08
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log opened at 2017-03-18 05:27:55
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log closed at 2017-03-18 05:29:55
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log opened at 2017-03-18 05:34:44
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log closed at 2017-03-18 05:40:04

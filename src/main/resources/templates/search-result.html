@@ -120,7 +120,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="servicio : ${serviciolist}">
-								<td class="text-center"><a
+								<td class="text-center"><a sec:authorize="hasRole('ROLE_CLIENTE')"
 									data-th-href="@{/add-fav/{id}(id=${servicio.id})}"><span
 										class="glyphicon glyphicon-heart" aria-hidden="true"
 										style="font-size: 20px;"></span></a></td>
