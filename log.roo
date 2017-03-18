@@ -60,3 +60,6 @@ service --entity ~.reference.Historial
 repository jpa --entity ~.reference.Historial 
 service --entity ~.reference.Historial
 // Spring Roo 2.0.0.RC1 [rev 28015e3] log closed at 2017-03-15 01:20:43
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log opened at 2017-03-18 04:56:19
+finder add --entity ~.domain.Servicio --name findByPrestador
+// Spring Roo 2.0.0.RC1 [rev 28015e3] log closed at 2017-03-18 05:06:08

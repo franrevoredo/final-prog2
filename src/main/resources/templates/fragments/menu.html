@@ -232,8 +232,12 @@
 						</ul></li>
 						<li sec:authorize="hasRole('ROLE_PRESTADOR')" ><a href="/nuevo-servicio"
 								data-th-href="@{/nuevo-servicio}"
-								data-th-utext="#{nuevo_servicio}">Create
+								data-th-utext="#{nuevo_servicio}">Nuevo
 									Servicio</a></li>
+						<li sec:authorize="hasRole('ROLE_PRESTADOR')" ><a href="/nuevo-servicio"
+								data-th-href="@{/mis-servicios}"
+								data-th-utext="#{mis_servicios}">Mis
+									Servicios</a></li>
 				</ul>
 
 				<!-- Language select -->

@@ -9,6 +9,6 @@ import org.springframework.roo.addon.layers.repository.jpa.annotations.finder.Ro
  * TODO Auto-generated class documentation
  *
  */
-@RooJpaRepository(entity = Servicio.class, finders = { @RooFinder(value = "findByTelefono", returnType = Servicio.class), @RooFinder(value = "findByNombreLike", returnType = Servicio.class), @RooFinder(value = "findByPuntaje", returnType = Servicio.class), @RooFinder(value = "findByCategoria", returnType = Servicio.class), @RooFinder(value = "queryByCategoria", returnType = Servicio.class) })
+@RooJpaRepository(entity = Servicio.class, finders = { @RooFinder(value = "findByTelefono", returnType = Servicio.class), @RooFinder(value = "findByNombreLike", returnType = Servicio.class), @RooFinder(value = "findByPuntaje", returnType = Servicio.class), @RooFinder(value = "findByCategoria", returnType = Servicio.class), @RooFinder(value = "queryByCategoria", returnType = Servicio.class), @RooFinder(value = "findByPrestador", returnType = Servicio.class) })
 public interface ServicioRepository {
 }

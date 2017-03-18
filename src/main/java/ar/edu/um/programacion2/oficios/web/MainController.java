@@ -2,6 +2,7 @@ package ar.edu.um.programacion2.oficios.web;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,6 +127,15 @@ public class MainController {
 		model.addAttribute("servicio", servicio);
 		model.addAttribute("mapstring", servicio.getLocalidad().getMapString());
 		return new ModelAndView("servicios/show");
+	}
+	
+	@GetMapping("/mis-servicios")
+	public String misServicios(Model model, Pageable pageable, Principal principal) {
+		Prestador current = (Prestador) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
+		List<Servicio> listaDeServicio = servicioService.findByPrestador(current, pageable).getContent();
+		model.addAttribute("searchby", "Mis Servicios");
+		model.addAttribute("serviciolist", listaDeServicio);
+		return "search-result";
 	}
 	
 	@GetMapping("/pedir-servicio/{id}")

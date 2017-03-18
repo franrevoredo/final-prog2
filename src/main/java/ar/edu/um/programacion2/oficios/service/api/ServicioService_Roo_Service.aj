@@ -3,6 +3,7 @@
 
 package ar.edu.um.programacion2.oficios.service.api;
 
+import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.service.api.ServicioService;
@@ -141,6 +142,15 @@ privileged aspect ServicioService_Roo_Service {
     /**
      * TODO Auto-generated method documentation
      * 
+     * @param prestador
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Servicio> ServicioService.findByPrestador(Prestador prestador, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
      * @param telefono
      * @return Long
      */
@@ -169,5 +179,13 @@ privileged aspect ServicioService_Roo_Service {
      * @return Long
      */
     public abstract long ServicioService.countByCategoria(Categoria categoria);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param prestador
+     * @return Long
+     */
+    public abstract long ServicioService.countByPrestador(Prestador prestador);
     
 }

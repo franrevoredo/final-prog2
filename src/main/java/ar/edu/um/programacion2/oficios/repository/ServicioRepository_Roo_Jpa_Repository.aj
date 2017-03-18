@@ -3,6 +3,7 @@
 
 package ar.edu.um.programacion2.oficios.repository;
 
+import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.repository.ServicioRepository;
@@ -96,5 +97,22 @@ privileged aspect ServicioRepository_Roo_Jpa_Repository {
      * @return Page
      */
     public abstract Page<Servicio> ServicioRepository.queryByCategoria(Categoria categoria, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param prestador
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Servicio> ServicioRepository.findByPrestador(Prestador prestador, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param prestador
+     * @return Long
+     */
+    public abstract long ServicioRepository.countByPrestador(Prestador prestador);
     
 }

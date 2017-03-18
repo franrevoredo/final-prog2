@@ -3,6 +3,7 @@
 
 package ar.edu.um.programacion2.oficios.service.impl;
 
+import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.repository.ServicioRepository;
@@ -215,6 +216,17 @@ privileged aspect ServicioServiceImpl_Roo_Service_Impl {
     /**
      * TODO Auto-generated method documentation
      * 
+     * @param prestador
+     * @param pageable
+     * @return Page
+     */
+    public Page<Servicio> ServicioServiceImpl.findByPrestador(Prestador prestador, Pageable pageable) {
+        return getServicioRepository().findByPrestador(prestador, pageable);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
      * @param telefono
      * @return Long
      */
@@ -250,6 +262,16 @@ privileged aspect ServicioServiceImpl_Roo_Service_Impl {
      */
     public long ServicioServiceImpl.countByCategoria(Categoria categoria) {
         return getServicioRepository().countByCategoria(categoria);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param prestador
+     * @return Long
+     */
+    public long ServicioServiceImpl.countByPrestador(Prestador prestador) {
+        return getServicioRepository().countByPrestador(prestador);
     }
     
     /**

@@ -38,7 +38,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 				"/disponibilidads/create-form", "/localidads/create-form", "/categorias/list", "/disponibilidads/list",
 				"/localidads/list", "/personae/list", "/clientes/list", "/prestadors/list")
 				.hasAuthority("ROLE_ADMINISTRADOR");
-		http.authorizeRequests().antMatchers("/nuevo-servicio", "/calificacionprestadors/**", "/servicios/**")
+		http.authorizeRequests().antMatchers("/nuevo-servicio", "/calificacionprestadors/**", "/servicios/**", "/mis-servicios")
 				.hasAuthority("ROLE_PRESTADOR");
 		http.authorizeRequests()
 				.antMatchers("/calificacionclientes/**", "/add-fav/**", "/ver-cliente/**", "/del-fav/**", "/pedir-servicio/**")
