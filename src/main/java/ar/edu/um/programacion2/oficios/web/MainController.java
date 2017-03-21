@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Pageable;
@@ -157,26 +159,30 @@ public class MainController {
 	}
 	
 	@GetMapping("/pedir-servicio/{id}")
-	public ModelAndView pedirServicio(@PathVariable(value = "id") long id, Model model, Principal principal, Pageable pageable) {
+	public ModelAndView pedirServicio(@PathVariable(value = "id") long id, Model model, Principal principal, Pageable pageable, HttpServletRequest request) {
 		Servicio servicio = servicioService.findOne(id);
 		Prestador prestador = servicio.getPrestador();
 		Cliente current = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
 		
-		String body = "El cliente " + current.getUsername() + " pidió contactarte. Su número de telefono es " + current.getTelefono() + ". \nGracias.";
+		String body = "El cliente " + current.getUsername() + " pidió contactarte.<br> Su número de telefono es <b>" + current.getTelefono() + "</b> <br>Gracias.";
 		
 		mailClient.prepareAndSend(prestador.getEmail(), "Solicitud de Servicio", body);
-		
-		body = "Solicitaste el servicio " + servicio.getNombre() + " del prestador " + prestador.getUsername() + ". Su numero de telefono es " + servicio.getTelefono() + ". \nGracias.";
-		
-		mailClient.prepareAndSend(current.getEmail(), "Solicitud de Servicio", body);
-		
+	
 		Historial historial = new Historial();
 		
 		historial.setCliente(current);
 		historial.setServicio(servicio);
 		
-		historialService.save(historial);
+		Historial newHistorial = historialService.save(historial);
+		
+		String reviewLink = "http://" + request.getServerName().toString() + ":" + request.getLocalPort() + "/nueva-calificacion/" + servicio.getId() + "/?hist=" + newHistorial.getId();
 
+		body = "<h2>Solicitaste el servicio " + servicio.getNombre() + " del prestador " + prestador.getUsername() + ".</h2><p>Su numero de telefono es <b>" + servicio.getTelefono() + "</b> <br> No olvides de puntar el servicio:  <a href='" + reviewLink +"'>Puntuar Ahora</a></p> <br>Gracias.";
+		
+		mailClient.prepareAndSend(current.getEmail(), "Solicitud de Servicio", body);
+		
+		
+		model.addAttribute("historialid", newHistorial.getId());
 		model.addAttribute("servicio", servicio.getNombre());
 		model.addAttribute("tumail", current.getEmail());
 		
