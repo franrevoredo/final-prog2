@@ -7,7 +7,7 @@
 
     <!-- DateTimePicker -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css" data-th-href="@{/webjars/datetimepicker/build/jquery.datetimepicker.min.css}" />
-
+	
   </head>
 
   <body id="body">
@@ -29,7 +29,7 @@
           <h1 data-th-text="#{calificacioncliente_titulo}">Create CalificacionCliente</h1>
 
           <!-- FORM -->
-          <form class="form-horizontal validate" method="POST" data-th-object="${calificacionCliente}" data-th-action="@{${collectionLink.to('create').with('calificacionCliente', calificacionCliente.id)}}">
+          <form class="form-horizontal validate" id="formReviewCliente" method="POST" data-th-object="${calificacionCliente}" data-th-action="@{${collectionLink.to('create').with('calificacionCliente', calificacionCliente.id)}}">
 
             <fieldset id="containerFields">
               <legend class="sr-only" data-th-text="#{label_data_entity(#{label_calificacioncliente})}">CalificacionCliente data </legend>
@@ -160,6 +160,13 @@
 																'inputmask' : /*[[#{error_invalid_maskValue}]]*/'Please enter a valid value',
 															});
 										});
+						jQuery('#formReviewCliente').submit(function() { //Sacamos el atributo disabled de los campos select que no nos dejan enviar correctamente el form cuando lo mandamos.
+							if (jQuery('#formReviewCliente')[0].checkValidity()) {
+								jQuery('#formReviewCliente').hide("fast");
+								jQuery('select').removeAttr('disabled'); 
+							}
+
+						});
 					})(jQuery);
 		  </script>
 

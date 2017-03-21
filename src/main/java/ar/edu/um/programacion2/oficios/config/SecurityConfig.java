@@ -38,7 +38,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 				"/disponibilidads/create-form", "/localidads/create-form", "/categorias/list", "/disponibilidads/list",
 				"/localidads/list", "/personae/list", "/clientes/list", "/prestadors/list")
 				.hasAuthority("ROLE_ADMINISTRADOR");
-		http.authorizeRequests().antMatchers("/nuevo-servicio", "/calificacionprestadors/**", "/servicios/**", "/mis-servicios")
+		http.authorizeRequests().antMatchers("/nuevo-servicio", "/calificacionprestadors/**", "/mis-servicios")
 				.hasAuthority("ROLE_PRESTADOR");
 		http.authorizeRequests()
 				.antMatchers("/calificacionclientes/**", "/add-fav/**", "/ver-cliente/**", "/del-fav/**", "/pedir-servicio/**", "/nueva-calificacion/**")
@@ -48,7 +48,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/public/**", "/js/**", "/webjars/**", "/", "/clientes/create-form",
 						"/prestadors/create-form", "/ver-servicio/**", "/categorias/s2", "/disponibilidads/s2",
-						"/localidads/s2", "/testuser")
+						"/localidads/s2", "/testuser", "/servicios/s2", "/clientes/s2")
 				.permitAll().anyRequest().anonymous();
 		http.csrf().disable();
 	}
