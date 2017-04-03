@@ -18,7 +18,6 @@ import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
 @RooJpaEntity
 public class CalificacionCliente extends Calificacion {
 	
-	CalificacionCliente() { }
 	
 	public CalificacionCliente(Cliente autor, Servicio servicio) {
 		this.autor = autor;
