@@ -3,10 +3,13 @@
 
 package ar.edu.um.programacion2.oficios.repository;
 
+import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Historial;
 import ar.edu.um.programacion2.oficios.repository.HistorialRepository;
 import ar.edu.um.programacion2.oficios.repository.HistorialRepositoryCustom;
 import io.springlets.data.jpa.repository.DetachableJpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect HistorialRepository_Roo_Jpa_Repository {
@@ -16,5 +19,22 @@ privileged aspect HistorialRepository_Roo_Jpa_Repository {
     declare parents: HistorialRepository extends HistorialRepositoryCustom;
     
     declare @type: HistorialRepository: @Transactional(readOnly = true);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param servicio
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Historial> HistorialRepository.findByServicio(Servicio servicio, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param servicio
+     * @return Long
+     */
+    public abstract long HistorialRepository.countByServicio(Servicio servicio);
     
 }
