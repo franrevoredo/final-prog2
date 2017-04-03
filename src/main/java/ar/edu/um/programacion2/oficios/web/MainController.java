@@ -125,11 +125,29 @@ public class MainController {
 	}
 	
 	@GetMapping("/nueva-calificacion/{id}")
-	public ModelAndView newCalificacionCliente(@PathVariable(value = "id") long id, Model model, Principal principal, Pageable pageable) {
+	public ModelAndView newCalificacionCliente(Model model, Principal principal, Pageable pageable,
+			@PathVariable(value = "id") long id,
+			@RequestParam(value = "hist") long hist_id) {
 		Cliente current = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
+
+		Historial historial = historialService.findOne(hist_id);
+
+		if(historial == null) {
+			model.addAttribute("error", "NOT FOUND");
+			model.addAttribute("message", "Esa transacción no existe.");
+			model.addAttribute("status", "404");
+			return new ModelAndView("error");
+			
+		} else if(historial.getCliente().getId() != current.getId()) {
+			model.addAttribute("error", "FORBIDDEN");
+			model.addAttribute("message", "Usted no contrato ese servicio. No lo puede puntuar.");
+			model.addAttribute("status", "403");
+			return new ModelAndView("error");
+		}
+
+
 		Servicio servicio = servicioService.findOne(id);
-		
-        model.addAttribute("calificacionCliente", new CalificacionCliente(current, servicio));
+		model.addAttribute("calificacionCliente", new CalificacionCliente(current, servicio));
 		califcliCollection.populateForm(model);
         return new ModelAndView("calificacionclientes/create");
 
@@ -175,7 +193,7 @@ public class MainController {
 		
 		Historial newHistorial = historialService.save(historial);
 		
-		String reviewLink = "http://" + request.getServerName().toString() + ":" + request.getLocalPort() + "/nueva-calificacion/" + servicio.getId() + "/?hist=" + newHistorial.getId();
+		String reviewLink = "http://" + request.getServerName().toString() + ":" + request.getLocalPort() + "/nueva-calificacion/" + servicio.getId() + "?hist=" + newHistorial.getId();
 
 		body = "<h2>Solicitaste el servicio " + servicio.getNombre() + " del prestador " + prestador.getUsername() + ".</h2><p>Su numero de telefono es <b>" + servicio.getTelefono() + "</b> <br> No olvides de puntar el servicio:  <a href='" + reviewLink +"'>Puntuar Ahora</a></p> <br>Gracias.";
 		
