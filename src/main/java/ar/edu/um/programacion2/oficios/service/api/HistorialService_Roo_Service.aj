@@ -3,6 +3,7 @@
 
 package ar.edu.um.programacion2.oficios.service.api;
 
+import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Historial;
 import ar.edu.um.programacion2.oficios.service.api.HistorialService;
 import io.springlets.data.domain.GlobalSearch;
@@ -91,5 +92,22 @@ privileged aspect HistorialService_Roo_Service {
      * @return Page
      */
     public abstract Page<Historial> HistorialService.findAll(GlobalSearch globalSearch, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param servicio
+     * @param pageable
+     * @return Page
+     */
+    public abstract Page<Historial> HistorialService.findByServicio(Servicio servicio, Pageable pageable);
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param servicio
+     * @return Long
+     */
+    public abstract long HistorialService.countByServicio(Servicio servicio);
     
 }

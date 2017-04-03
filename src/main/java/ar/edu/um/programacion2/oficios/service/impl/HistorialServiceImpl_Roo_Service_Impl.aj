@@ -3,6 +3,7 @@
 
 package ar.edu.um.programacion2.oficios.service.impl;
 
+import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Historial;
 import ar.edu.um.programacion2.oficios.repository.HistorialRepository;
 import ar.edu.um.programacion2.oficios.service.impl.HistorialServiceImpl;
@@ -154,6 +155,27 @@ privileged aspect HistorialServiceImpl_Roo_Service_Impl {
      */
     public Page<Historial> HistorialServiceImpl.findAll(GlobalSearch globalSearch, Pageable pageable) {
         return getHistorialRepository().findAll(globalSearch, pageable);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param servicio
+     * @param pageable
+     * @return Page
+     */
+    public Page<Historial> HistorialServiceImpl.findByServicio(Servicio servicio, Pageable pageable) {
+        return getHistorialRepository().findByServicio(servicio, pageable);
+    }
+    
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param servicio
+     * @return Long
+     */
+    public long HistorialServiceImpl.countByServicio(Servicio servicio) {
+        return getHistorialRepository().countByServicio(servicio);
     }
     
     /**
