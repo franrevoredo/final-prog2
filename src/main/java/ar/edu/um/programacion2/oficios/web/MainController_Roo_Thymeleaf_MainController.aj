@@ -18,17 +18,6 @@ privileged aspect MainController_Roo_Thymeleaf_MainController {
     
     declare @type: MainController: @Controller;
     
-    /**
-     * TODO Auto-generated method documentation
-     * 
-     * @param model
-     * @return String
-     */
-    @GetMapping("/")
-    public String MainController.index(Model model) {
-        model.addAttribute("application_locale", LocaleContextHolder.getLocale().getLanguage());
-        return "index";
-    }
     
     /**
      * TODO Auto-generated method documentation

@@ -1,6 +1,7 @@
 package ar.edu.um.programacion2.oficios.web;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -74,6 +75,40 @@ public class MainController {
 
 	@Autowired
 	CalificacionClienteServiceImpl califcliService;
+	
+    /**
+     * TODO Auto-generated method documentation
+     * 
+     * @param model
+     * @return String
+     */
+    @GetMapping("/")
+    public String index(Model model, Principal principal, Pageable pageable, HttpServletRequest request) {
+        model.addAttribute("application_locale", LocaleContextHolder.getLocale().getLanguage());
+
+        if(request.isUserInRole("ROLE_PRESTADOR")) { //Si el usuario que entra al index es prestador, busco si tiene calificaciones sin calificar entre sus servicios.
+
+        	Prestador user = (Prestador) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
+
+        	if(user != null) {
+        		List<Historial> pendientes = new ArrayList<Historial>();
+
+        		List<Servicio> servicios = servicioService.findByPrestador(user, pageable).getContent();
+
+        		for(Servicio servicio : servicios) {
+        			List<Historial> historial = historialService.findByServicio(servicio, pageable).getContent();
+        			for(Historial item : historial) {
+        				if(item.getCalificacion_cliente() != null || item.getCalificacion_prestador() == null) {
+        					pendientes.add(item);
+        				}
+        			}
+        		}
+        		model.addAttribute("pendientes", pendientes);
+        	}
+
+        }
+        return "index";
+    }
 
 	@GetMapping("/testuser")
 	public String testUser(Pageable pageable, Principal principal) {
