@@ -18,7 +18,13 @@ import org.springframework.roo.addon.jpa.annotations.entity.RooJpaEntity;
 @RooJpaEntity
 public class CalificacionPrestador extends Calificacion {
 	
-    @OneToOne(fetch=FetchType.LAZY)
+    public CalificacionPrestador(CalificacionCliente calificacion_destino, Prestador autor) {
+		super();
+		this.calificacion_destino = calificacion_destino;
+		this.autor = autor;
+	}
+
+	@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="calificacion_id")
     private CalificacionCliente calificacion_destino;
     

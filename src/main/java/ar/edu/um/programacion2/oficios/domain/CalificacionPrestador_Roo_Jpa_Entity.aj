@@ -25,4 +25,12 @@ privileged aspect CalificacionPrestador_Roo_Jpa_Entity {
      */
     public static final String CalificacionPrestador.ITERABLE_TO_REMOVE_CANT_BE_NULL_MESSAGE = "The given Iterable of items to add can't be null!";
     
+    /**
+     * TODO Auto-generated constructor documentation
+     * 
+     */
+    public CalificacionPrestador.new() {
+        super();
+    }
+
 }
