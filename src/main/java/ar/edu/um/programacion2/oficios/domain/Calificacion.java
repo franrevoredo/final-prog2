@@ -51,4 +51,13 @@ public class Calificacion {
      */
     @Enumerated
     private TipoCalif tipo;
+
+	/**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+        return "[" + id + "]";
+    }
 }

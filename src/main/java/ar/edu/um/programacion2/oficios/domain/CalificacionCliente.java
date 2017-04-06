@@ -31,4 +31,13 @@ public class CalificacionCliente extends Calificacion {
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="servicio_id")
     private Servicio servicio;
+
+	/**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+        return autor + " califica a " + servicio + " - " + super.toString();
+    }
 }

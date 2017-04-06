@@ -32,4 +32,13 @@ public class CalificacionPrestador extends Calificacion {
     @JoinColumn(name="prestador_id")
     private Prestador autor;
     
+
+	/**
+     * TODO Auto-generated method documentation
+     * 
+     * @return String
+     */
+    public String toString() {
+        return autor + " en respuesta a {" + calificacion_destino + "} - " + super.toString();
+    }
 }
