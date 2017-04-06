@@ -13,6 +13,7 @@ import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
 import ar.edu.um.programacion2.oficios.reference.Categoria;
 import ar.edu.um.programacion2.oficios.reference.Disponibilidad;
+import ar.edu.um.programacion2.oficios.reference.Historial;
 import ar.edu.um.programacion2.oficios.reference.Localidad;
 import ar.edu.um.programacion2.oficios.reference.Persona;
 import ar.edu.um.programacion2.oficios.web.AdministradorJsonMixin;
@@ -22,6 +23,7 @@ import ar.edu.um.programacion2.oficios.web.CalificacionPrestadorJsonMixin;
 import ar.edu.um.programacion2.oficios.web.CategoriaJsonMixin;
 import ar.edu.um.programacion2.oficios.web.ClienteJsonMixin;
 import ar.edu.um.programacion2.oficios.web.DisponibilidadJsonMixin;
+import ar.edu.um.programacion2.oficios.web.HistorialJsonMixin;
 import ar.edu.um.programacion2.oficios.web.LocalidadJsonMixin;
 import ar.edu.um.programacion2.oficios.web.PersonaJsonMixin;
 import ar.edu.um.programacion2.oficios.web.PrestadorJsonMixin;
@@ -51,6 +53,7 @@ privileged aspect DomainModelModule_Roo_DomainModelModule {
         setMixInAnnotation(Servicio.class, ServicioJsonMixin.class);
         setMixInAnnotation(Categoria.class, CategoriaJsonMixin.class);
         setMixInAnnotation(Disponibilidad.class, DisponibilidadJsonMixin.class);
+        setMixInAnnotation(Historial.class, HistorialJsonMixin.class);
         setMixInAnnotation(Localidad.class, LocalidadJsonMixin.class);
         setMixInAnnotation(Persona.class, PersonaJsonMixin.class);
     }

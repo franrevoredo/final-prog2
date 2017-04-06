@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+  <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_historial})}|">Show Historial - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content" data-th-object="${historial}">
+        <div class="container-fluid content">
+
+          <!-- CONTENT -->
+          <h1 data-th-text="#{label_show_entity(#{label_historial})}">Show Historial</h1>
+
+            <div id="mainEntityFieldSet">
+              <h2 data-th-text="#{label_data_entity(#{label_historial})}">Historial data</h2>
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="historial-cliente-field" data-z="7d717eda">
+            	      <strong data-th-text="#{label_historial_cliente}">cliente</strong>
+                    <span data-th-text="*{{cliente}}">clienteValue</span>
+         	        </li>
+                  <li id="historial-servicio-field" data-z="ee140744">
+            	      <strong data-th-text="#{label_historial_servicio}">servicio</strong>
+                    <span data-th-text="*{{servicio}}">servicioValue</span>
+         	        </li>
+                  <li id="historial-calificacion_cliente-field" data-z="ed2d7304">
+            	      <strong data-th-text="#{label_historial_calificacion_cliente}">calificacion_cliente</strong>
+                    <span data-th-text="*{{calificacion_cliente}}">calificacion_clienteValue</span>
+         	        </li>
+                  <li id="historial-calificacion_prestador-field" data-z="49369bc4">
+            	      <strong data-th-text="#{label_historial_calificacion_prestador}">calificacion_prestador</strong>
+                    <span data-th-text="*{{calificacion_prestador}}">calificacion_prestadorValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+
+          <div class="clearfix">
+            <div class="pull-right">
+             <a id="Historial_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('HistorialsItemThymeleafController').to('editForm').with('historial', historial.id)}" data-th-text="#{label_edit}">Edit</a>
+            </div>
+          </div>
+
+
+          <div class="clearfix">
+            <div class="pull-left">
+              <a id="Historial_list" href="list.html" class="btn btn-default" data-th-title="#{label_goBack}" data-th-href="${@linkBuilder.of('HistorialsCollectionThymeleafController').to('list')}">
+  	             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+  	             <span data-th-text="#{label_back}">Back</span>
+  	          </a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>

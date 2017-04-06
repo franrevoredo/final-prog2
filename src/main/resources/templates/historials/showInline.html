@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+    <head id="head">
+
+    <title data-th-text="|#{label_show_entity(#{label_historial})}|">Show Historial - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-th-fragment="inline-content" data-layout-fragment="content" data-th-object="${historial}">
+        <div>
+
+          <!-- CONTENT -->
+            <div id="mainEntityFieldSet">
+              <ul class="list-unstyled" id="containerFields">
+                  <li id="historial-cliente-field" data-z="7d717eda">
+            	      <strong data-th-text="#{label_historial_cliente}">cliente</strong>
+                    <span data-th-text="*{{cliente}}">clienteValue</span>
+         	        </li>
+                  <li id="historial-servicio-field" data-z="ee140744">
+            	      <strong data-th-text="#{label_historial_servicio}">servicio</strong>
+                    <span data-th-text="*{{servicio}}">servicioValue</span>
+         	        </li>
+                  <li id="historial-calificacion_cliente-field" data-z="ed2d7304">
+            	      <strong data-th-text="#{label_historial_calificacion_cliente}">calificacion_cliente</strong>
+                    <span data-th-text="*{{calificacion_cliente}}">calificacion_clienteValue</span>
+         	        </li>
+                  <li id="historial-calificacion_prestador-field" data-z="49369bc4">
+            	      <strong data-th-text="#{label_historial_calificacion_prestador}">calificacion_prestador</strong>
+                    <span data-th-text="*{{calificacion_prestador}}">calificacion_prestadorValue</span>
+         	        </li>
+              </ul>
+            </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+  </div>
+  <!-- /CONTAINER -->
+
+  <footer class="container">
+    <!-- Content replaced by layout of the page displayed -->
+  </footer>
+
+  <!-- JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so that the pages load faster -->
+  <!-- JavaScript loaded by layout of the page displayed -->
+  <!--
+       Only the inner content of the following tag "javascript" is included
+       within the template, in the div "javascript"
+      -->
+  <div data-layout-fragment="javascript">
+  </div>
+
+  </body>
+
+</html>
