@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.um.programacion2.oficios.domain.CalificacionCliente;
+import ar.edu.um.programacion2.oficios.domain.CalificacionPrestador;
 import ar.edu.um.programacion2.oficios.domain.Cliente;
 import ar.edu.um.programacion2.oficios.domain.Prestador;
 import ar.edu.um.programacion2.oficios.domain.Servicio;
@@ -73,6 +74,9 @@ public class MainController {
 	@Autowired
 	CalificacionClientesCollectionThymeleafController califcliCollection;
 
+	@Autowired
+	CalificacionPrestadorsCollectionThymeleafController califpresCollection;
+	
 	@Autowired
 	CalificacionClienteServiceImpl califcliService;
 	
@@ -161,8 +165,7 @@ public class MainController {
 	
 	@GetMapping("/nueva-calificacion/{id}")
 	public ModelAndView newCalificacionCliente(Model model, Principal principal, Pageable pageable,
-			@PathVariable(value = "id") long id,
-			@RequestParam(value = "hist") long hist_id) {
+			@PathVariable(value = "id") long hist_id) {
 		Cliente current = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
 
 		Historial historial = historialService.findOne(hist_id);
@@ -178,13 +181,69 @@ public class MainController {
 			model.addAttribute("message", "Usted no contrato ese servicio. No lo puede puntuar.");
 			model.addAttribute("status", "403");
 			return new ModelAndView("error");
+			
 		}
 
 
-		Servicio servicio = servicioService.findOne(id);
+		Servicio servicio = historial.getServicio();
 		model.addAttribute("calificacionCliente", new CalificacionCliente(current, servicio));
 		califcliCollection.populateForm(model);
+		model.addAttribute("hist_id", hist_id);
         return new ModelAndView("calificacionclientes/create");
+
+	}
+	
+	@GetMapping("/responder-calificacion/{id}")
+	public ModelAndView newCalificacionPrestador(Model model, Principal principal, Pageable pageable, HttpServletRequest request,
+			@PathVariable(value = "id") Long hist_id) {
+		
+		if(hist_id == null ) {
+			model.addAttribute("error", "NULL HISTORY");
+			model.addAttribute("message", "No se puede buscar un historial con id nulo.");
+			model.addAttribute("status", "500");
+			return new ModelAndView("error");
+		}
+		 
+		if(request.isUserInRole("ROLE_PRESTADOR")) {
+
+			Prestador user = (Prestador) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
+
+			if(user != null) {
+				
+				Historial historial = historialService.findOne(hist_id);
+				
+				CalificacionCliente calif = historial.getCalificacion_cliente();
+
+				System.out.println(calif);
+				
+				if(calif == null) {
+					model.addAttribute("error", "NOT FOUND");
+					model.addAttribute("message", "Esa calificación no existe, no puede cambiarla.");
+					model.addAttribute("status", "404");
+					return new ModelAndView("error");
+				} else if(calif.getServicio().getPrestador().getId() != user.getId()) {
+					model.addAttribute("error", "FORBIDDEN");
+					model.addAttribute("message", "Usted no es el prestador de ese servicio. No puede responder sus calificaciones.");
+					model.addAttribute("status", "403");
+					return new ModelAndView("error");
+				}
+
+				model.addAttribute("calificacionCliente", new CalificacionPrestador(calif, user));
+				califpresCollection.populateForm(model);
+				return new ModelAndView("calificacionprestador/create");
+
+			} else {
+				model.addAttribute("error", "INTERNAL SERVER ERROR");
+				model.addAttribute("message", "No pudo encontrarse su usuario, intente nuevamente o contacte un administrador.");
+				model.addAttribute("status", "500");
+				return new ModelAndView("error");
+			}
+		} else {
+			model.addAttribute("error", "FORBIDDEN");
+			model.addAttribute("message", "Su usuario no es un prestador, no puede responder otras calificaciones.");
+			model.addAttribute("status", "403");
+			return new ModelAndView("error");
+		}
 
 	}
 	
@@ -217,10 +276,14 @@ public class MainController {
 		Prestador prestador = servicio.getPrestador();
 		Cliente current = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
 		
-		String body = "El cliente " + current.getUsername() + " pidió contactarte.<br> Su número de telefono es <b>" + current.getTelefono() + "</b> <br>Gracias.";
+		//Email al prestador
 		
-		mailClient.prepareAndSend(prestador.getEmail(), "Solicitud de Servicio", body);
+		String body = "<h2>El cliente <i>" + current.getUsername() + "</i> solicitó uno de tus servicios.</h2><br> Se le proporcionó el número de teléfono del servicio" + servicio.getNombre() + ".<br><br> Si el cliente no concreta su pedido en 24h, te recomendamos recordarselo coordialmente. Su número es <b>" + current.getTelefono() + "</b> <br>Gracias.";
+		
+		mailClient.prepareAndSend(prestador.getEmail(), "Solicitud de Servicio " + servicio.getNombre(), body);
 	
+		//Creamos el historial de la operación
+		
 		Historial historial = new Historial();
 		
 		historial.setCliente(current);
@@ -228,12 +291,13 @@ public class MainController {
 		
 		Historial newHistorial = historialService.save(historial);
 		
-		String reviewLink = "http://" + request.getServerName().toString() + ":" + request.getLocalPort() + "/nueva-calificacion/" + servicio.getId() + "?hist=" + newHistorial.getId();
+		//Email al cliente
+		
+		String reviewLink = "http://" + request.getServerName().toString() + ":" + request.getLocalPort() + "/nueva-calificacion/" +  newHistorial.getId();
 
-		body = "<h2>Solicitaste el servicio " + servicio.getNombre() + " del prestador " + prestador.getUsername() + ".</h2><p>Su numero de telefono es <b>" + servicio.getTelefono() + "</b> <br> No olvides de puntar el servicio:  <a href='" + reviewLink +"'>Puntuar Ahora</a></p> <br>Gracias.";
+		body = "<h2>Solicitaste el servicio <i>" + servicio.getNombre() + "</i> del prestador <i>" + prestador.getUsername() + "</i>.</h2><p>Su numero de telefono es <b>" + servicio.getTelefono() + "</b> <br><br> No olvides de puntar el servicio luego de concretado:  <a href='" + reviewLink +"'>Puntuar Ahora</a></p> <br>Gracias.";
 		
-		mailClient.prepareAndSend(current.getEmail(), "Solicitud de Servicio", body);
-		
+		mailClient.prepareAndSend(current.getEmail(), "Solicitaste un Servicio", body);
 		
 		model.addAttribute("historialid", newHistorial.getId());
 		model.addAttribute("servicio", servicio.getNombre());
