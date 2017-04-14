@@ -44,6 +44,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.annotations.ControllerType;
 import org.springframework.roo.addon.web.mvc.controller.annotations.RooController;
 import org.springframework.roo.addon.web.mvc.thymeleaf.annotations.RooThymeleaf;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -255,7 +256,13 @@ public class ServiciosCollectionThymeleafController {
             
             return new ModelAndView("/servicios/create");
         }
-        
+    	if(SecurityContextHolder.getContext().getAuthentication() == null) {
+			model.addAttribute("error", "NOT AUTHENTICATED");
+			model.addAttribute("message", "No se encuentra logeado.");
+			model.addAttribute("status", "403");
+			return new ModelAndView("error");
+    	}
+    	
         Prestador current = (Prestador) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
 
         if (current == null) { //Si por alguna razón el usuario actual no es prestador o no esta definido, volvemos al formulario de nuevo servicio.
