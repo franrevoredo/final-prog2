@@ -272,10 +272,10 @@ public class CalificacionClientesCollectionThymeleafController {
         return new ModelAndView("redirect:/");
     }
     
-//    //Método dummy con el method signature original para que spring roo no vuelva a crear el metodo create que sobreescribimos
-//    private ModelAndView create(@Valid @ModelAttribute CalificacionCliente calificacionCliente, BindingResult result, Model model) {
-//    	throw new UnsupportedOperationException();
-//    }
+    //Método dummy con el method signature original para que spring roo no vuelva a crear el metodo create que sobreescribimos
+    private ModelAndView create(@Valid @ModelAttribute CalificacionCliente calificacionCliente, BindingResult result, Model model) {
+    	return new ModelAndView("/");
+    }
 
 	/**
      * TODO Auto-generated method documentation
