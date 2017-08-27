@@ -306,18 +306,7 @@ public class MainController {
 		return new ModelAndView("pedirservicio");
 	}
 
-	@GetMapping("/ver-cliente/{id}")
-	public ModelAndView verCliente(@PathVariable(value = "id") long id, Model model, Principal principal,
-			Pageable pageable) {
-		Cliente cliente = clienteService.findOne(id);
-		Cliente current = (Cliente) personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
-		if (cliente.equals(current)) {
-			Set<Servicio> favoritos = cliente.getFavoritos();
-			model.addAttribute("favoritos", favoritos);
-		}
-		model.addAttribute("cliente", cliente);
-		return new ModelAndView("clientes/show");
-	}
+
 	
 	
 	
