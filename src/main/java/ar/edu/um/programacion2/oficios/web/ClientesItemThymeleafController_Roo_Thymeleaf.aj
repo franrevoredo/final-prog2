@@ -181,21 +181,7 @@ privileged aspect ClientesItemThymeleafController_Roo_Thymeleaf {
         populateFormats(model);
     }
     
-    /**
-     * TODO Auto-generated method documentation
-     * 
-     * @param cliente
-     * @param model
-     * @return ModelAndView
-     */
-    @GetMapping(value = "/edit-form", name = "editForm")
-    public ModelAndView ClientesItemThymeleafController.editForm(@ModelAttribute Cliente cliente, Model model) {
-        populateForm(model);
         
-        model.addAttribute("cliente", cliente);
-        return new ModelAndView("clientes/edit");
-    }
-    
     /**
      * TODO Auto-generated method documentation
      * 
@@ -247,5 +233,13 @@ privileged aspect ClientesItemThymeleafController_Roo_Thymeleaf {
         getClienteService().delete(cliente);
         return ResponseEntity.ok().build();
     }
+    
+    public ModelAndView ClientesItemThymeleafController.editForm(@ModelAttribute Cliente cliente, Model model) {
+        populateForm(model);
+        
+        model.addAttribute("cliente", cliente);
+        return new ModelAndView("clientes/edit");
+    }
+
     
 }

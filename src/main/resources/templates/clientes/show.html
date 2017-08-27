@@ -78,7 +78,7 @@
 
           <div class="clearfix">
             <div class="pull-right">
-             <a id="Cliente_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" data-th-href="${@linkBuilder.of('ClientesItemThymeleafController').to('editForm').with('cliente', cliente.id)}" data-th-text="#{label_edit}">Edit</a>
+             <a id="Cliente_edit" href="edit.html" class="btn btn-primary" data-th-title="#{label_goEdit}" th:href="@{'/clientes/' + ${cliente.getId()} + '/edit-form'}" data-th-text="#{label_edit}">Edit</a>
             </div>
           </div>
 

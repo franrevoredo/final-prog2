@@ -250,5 +250,10 @@ privileged aspect CalificacionClientesItemThymeleafController_Roo_Thymeleaf {
         getCalificacionClienteService().delete(calificacionCliente);
         return ResponseEntity.ok().build();
     }
+ 
+    //Método dummy con el method signature original para que spring roo no vuelva a crear el metodo create que sobreescribimos
+    private ModelAndView CalificacionClientesItemThymeleafController.create(@Valid @ModelAttribute CalificacionCliente calificacionCliente, BindingResult result, Model model) {
+    	return new ModelAndView("/");
+    }
     
 }
