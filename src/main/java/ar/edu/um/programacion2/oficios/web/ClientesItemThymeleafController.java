@@ -41,12 +41,14 @@ public class ClientesItemThymeleafController {
      */
     @GetMapping(value = "/edit-form", name = "editForm")
     public ModelAndView editForm(@ModelAttribute Cliente cliente, Model model, Principal principal, Pageable pageable, HttpServletRequest request) {
-    	Persona user = personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
-    	if(cliente.getId() == user.getId() || request.isUserInRole("ROLE_ADMINISTRADOR")) {
-	    	populateForm(model);
-	        model.addAttribute("cliente", cliente);
-	        return new ModelAndView("clientes/edit");
-    	}
+
+    	// METODO IMPLEMENTADO EN EL CONTROLLER DE CLIENTES
+    	//    	Persona user = personaService.findByUsername(principal.getName(), pageable).getContent().get(0);
+//    	if(cliente.getId() == user.getId() || request.isUserInRole("ROLE_ADMINISTRADOR")) {
+//	    	populateForm(model);
+//	        model.addAttribute("cliente", cliente);
+//	        return new ModelAndView("clientes/edit");
+//    	}
     	throw new SecurityException("No tiene permiso para editar ese usuario");
     }
     

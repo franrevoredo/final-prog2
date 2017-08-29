@@ -48,12 +48,12 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/nuevo-servicio", "/mis-servicios", "/responder-calificacion/**")
 				.hasAuthority("ROLE_PRESTADOR").antMatchers(HttpMethod.POST, "/servicios/").hasAuthority("ROLE_PRESTADOR");
 		http.authorizeRequests()
-				.antMatchers( "/add-fav/**", "/ver-cliente/**", "/del-fav/**", "/pedir-servicio/**", "/nueva-calificacion/**", "/calificacionclientes/create-form", "/calificacionclientes/")
+				.antMatchers( "/add-fav/**", "/ver-cliente/**", "/editar-cliente/**", "/del-fav/**", "/pedir-servicio/**", "/nueva-calificacion/**", "/calificacionclientes/create-form", "/calificacionclientes/")
 				.hasAuthority("ROLE_CLIENTE");
 		http.authorizeRequests().antMatchers("/buscar/**", "/myprofile", "/calificacionprestadors/dt", "/calificacionprestadors/s2", "/calificacionclientes/dt", "/calificacionclientes/s2").authenticated().and().formLogin()
 				.loginPage("/login").and().logout().logoutUrl("/logout").logoutSuccessUrl("/");
 		http.authorizeRequests()
-				.antMatchers("/public/**", "/js/**", "/webjars/**", "/", "/clientes/create-form",
+				.antMatchers("/public/**", "/js/**", "/webjars/**", "/", "/clientyes/create-form",
 						"/prestadors/create-form", "/ver-servicio/**", "/categorias/s2", "/disponibilidads/s2",
 						"/localidads/s2", "/testuser", "/servicios/s2", "/clientes/s2", "/historials/s2")
 				.permitAll().anyRequest().anonymous();
