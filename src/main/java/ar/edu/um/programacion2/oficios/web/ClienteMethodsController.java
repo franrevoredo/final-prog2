@@ -42,7 +42,7 @@ public class ClienteMethodsController {
 				.findByUsername(principal.getName(), pageable).getContent()
 				.get(0);
 		if (cliente == null) {
-			model.addAttribute("error", "NO EXISTE");
+			model.addAttribute("error", "NO EXISTE EL USUARIO");
 			model.addAttribute("message",
 					"El cliente al que quiere acceder no existe");
 			model.addAttribute("status", "404");

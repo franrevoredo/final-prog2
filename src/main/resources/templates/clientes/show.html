@@ -28,19 +28,19 @@
             <div id="mainEntityFieldSet">
               <h2 data-th-text="#{label_data_entity(#{label_cliente})}">Cliente data</h2>
               <ul class="list-unstyled" id="containerFields">
-                    <li id="cliente-avatar-field" data-z="fc74acaf">
-            	      <strong data-th-text="#{label_cliente_avatar}">avatar</strong>
+                    <li id="cliente-avatar-field" data-z="fc74acaf" th:if="${cliente.avatar}">
+            	      <strong data-th-text="#{label_cliente_avatar}" >avatar</strong>
                     <span data-th-text="*{{avatar}}">avatarValue</span>
          	        </li>
                   <li id="cliente-username-field" data-z="82f7950f">
             	      <strong data-th-text="#{label_cliente_username}">username</strong>
                     <span data-th-text="*{{username}}">usernameValue</span>
          	        </li>
-                  <li id="cliente-email-field" data-z="2d88c36f">
+                  <li id="cliente-email-field" data-z="2d88c36f" th:if="${authorizedview}">
             	      <strong data-th-text="#{label_cliente_email}">email</strong>
                     <span data-th-text="*{{email}}">emailValue</span>
          	        </li>
-                  <li id="cliente-telefono-field" data-z="a6a3c94f" th:if="${favoritos}">
+                  <li id="cliente-telefono-field" data-z="a6a3c94f" th:if="${authorizedview}">
             	      <strong data-th-text="#{label_cliente_telefono}">telefono</strong>
                     <span data-th-text="*{{telefono}}">telefonoValue</span>
          	        </li>
@@ -52,15 +52,15 @@
             	      <strong data-th-text="#{label_cliente_apellido}">apellido</strong>
                     <span data-th-text="*{{apellido}}">apellidoValue</span>
          	        </li>
-                  <li id="cliente-domicilio-field" data-z="b132664f" th:if="${favoritos}">
-            	      <strong data-th-text="#{label_cliente_domicilio}">domicilio</strong>
+                  <li id="cliente-domicilio-field" data-z="b132664f" th:if="${authorizedview}">
+            	      <strong data-th-text="#{label_cliente_domicilio}" >domicilio</strong>
                     <span data-th-text="*{{domicilio}}">domicilioValue</span>
          	        </li>
-                  <li id="cliente-domicilio2-field" data-z="750d822f" th:if="${favoritos}">
+                  <li id="cliente-domicilio2-field" data-z="750d822f" th:if="${authorizedview}">
             	      <strong data-th-text="#{label_cliente_domicilio2}">domicilio2</strong>
                     <span data-th-text="*{{domicilio2}}">domicilio2Value</span>
          	        </li>
-                  <li id="cliente-localidad-field" data-z="25eb95cf">
+                  <li id="cliente-localidad-field" data-z="25eb95cf" th:if="${cliente.localidad}">
             	      <strong data-th-text="#{label_cliente_localidad}">localidad</strong>
                     <span data-th-text="*{{localidad}}">localidadValue</span>
          	        </li>
