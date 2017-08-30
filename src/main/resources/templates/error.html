@@ -1,40 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" data-layout-decorate="~{layouts/default-layout}">
-    <head id="head">
+<head id="head">
+<link rel="stylesheet" type="text/css" media="all"  
+      href="../../css/error.css" th:href="@{/public/css/error.css}" />
+<title data-th-text="#{label_error}">Error - Spring Roo
+	application</title>
 
-      <title data-th-text="#{label_error}">Error - Spring Roo application</title>
+</head>
 
-  </head>
+<body id="body" data-z="user-managed">
 
-  <body id="body" data-z="user-managed">
+	<header role="banner">
+		<h1 data-th-text="#{label_errorpage}">Error Page</h1>
+		<!-- Content replaced by layout of the page displayed -->
+	</header>
 
-    <header role="banner">
-      <h1 data-th-text="#{label_errorpage}">Error Page</h1>
-      <!-- Content replaced by layout of the page displayed -->
-    </header>
-
-    <!-- CONTAINER -->
-    <div class="container bg-container">
-    <!-- CONTENT -->
-      <!--
+	<!-- CONTAINER -->
+	<div class="container bg-container">
+		<!-- CONTENT -->
+		<!--
         Only the inner content of the following tag "section" is included
         within the template, in the section "content"
       -->
-      <section data-layout-fragment="content">
-        <div class="alert alert-danger fade in" role="alert">
-          <h4 data-th-text="#{label_errorpage_header}">¡Error!</h4>
-          <p>
-            <span data-th-text="#{info_error}">An unexpected error has occurred</span>
-            (type=<span data-th-text="${error}">Bad</span>, status=<span data-th-text="${status}">500</span>).
-          </p>
-          <div data-th-text="${message}"></div>
-        </div>
-      </section>
+		<section data-layout-fragment="content">
 
-    <footer class="container">
-      <!-- Content replaced by layout of the page displayed -->
-    </footer>
+			<div class="alert alert-danger fade in" role="alert">
+				<div class="container">
+					<div class="col-md-2">
+						<img width="95px" height="96px" data-th-src="@{/public/img/errorlogo1.png}">
+					</div>
+					<div class="col-md-10 errormsg">
+						<h4>
+							<span data-th-text="#{label_errorpage_header}">¡Error </span>&nbsp;<span
+								data-th-text="${status}">500</span><span>!</span>
+						</h4>
 
-  </div></body>
+						<div data-th-text="#{info_error}">An unexpected error has
+							occurred</div>
+
+						<!-- 				<div data-th-text="${error}">Bad</div> -->
+
+						<div data-th-text="${message}"></div>
+					</div>
+				</div>
+			</div>
+			<a id="backButton" href="list.html" class="btn btn-default"
+				data-th-title="#{label_goBack}" onclick="window.history.back()">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span data-th-text="#{label_back}">Back</span>
+			</a>
+		</section>
+
+		<footer class="container">
+			<!-- Content replaced by layout of the page displayed -->
+		</footer>
+
+	</div>
+</body>
 
 </html>
