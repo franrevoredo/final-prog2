@@ -34,6 +34,7 @@
           <form class="form-horizontal validate" method="POST" data-th-object="${cliente}" data-th-action="@{/editar-cliente/}">
             <input type="hidden" name="_method" value="PUT" />
             <input type="hidden" name="version" data-th-value="*{version}" />
+             <input type="hidden" name="id" data-th-value="*{id}" />
 
             <!-- CONCURRENCY CONTROL -->
             <div class="alert alert-warning" data-th-if="${concurrency}">

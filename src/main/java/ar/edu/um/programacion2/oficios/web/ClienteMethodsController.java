@@ -84,15 +84,12 @@ public class ClienteMethodsController {
 			model.addAttribute("status", "403");
 			return new ModelAndView("error");
 		}
-
         return new ModelAndView("clientes/editgui");
 	}
 
     @PutMapping("/editar-cliente/")
     public ModelAndView clienteUpdateGui(@Valid @ModelAttribute Cliente cliente, @RequestParam("version") Integer version, @RequestParam(value = "concurrency", required = false, defaultValue = "") String concurrencyControl, BindingResult result, Model model) {
         // Check if provided form contain errors
-    	
-    	System.out.println("ZAPATO: " + cliente.getId());
     	
         if (result.hasErrors()) {
             model.addAttribute("cliente", cliente);
