@@ -1,0 +1,9 @@
+Repositorio del sistema de Oficios - Programacion 2
+
+Pasos para montar el sistema:
+
+1. Instalar/prender el servidor SMTP para la funcionalidad de mail
+1.1 Con postfix en mac: sudo postfix start
+2. Importar el .sql de la base de datos
+2.1 Prender la base de datos MySQL/MariaDB
+3. Ejecutar el proyecto de spring boot desde la terminar con mvn clean spring-boot:run
