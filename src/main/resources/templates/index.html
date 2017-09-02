@@ -23,19 +23,28 @@
 		<section data-layout-fragment="content">
 			<div id="index-wrapper">
 				<div style="margin-bottom: 20px;">
-					<button id="clear-notif" class="btn btn-default" th:if="${pendientes}">
+					<button id="clear-notif" class="btn btn-default"
+						th:if="${pendientes}">
 						<span class="glyphicon glyphicon-remove"­></span>&nbsp;<span
-							data-th-text="#{label_borrar_notificaciones}">Borrar
+							data-th-text="#{label_ocultar_notificaciones}">Ocultar
 							Notificaciones</span>
+						<button id="show-notif" class="btn btn-default" style="display: none;"
+							th:if="${pendientes}">
+							<span class="glyphicon glyphicon-ok"­></span>&nbsp;<span
+								data-th-text="#{label_mostrar_notificaciones}">Mostrar
+								Notificaciones</span>
+						</button>
 					</button>
 				</div>
-				<div th:each="historial : ${pendientes}"
-					class="alert alert-info alert-dismissable">
-					<strong>Recordatorio!</strong> El usuario <span
-						data-th-text="${historial.cliente}"></span> te calificó y no
-					respondiste la calificación. <a
-						data-th-href="@{/responder-calificacion/{id}(id=${historial.id})}">Click
-						Aquí</a> para responder
+				<div id="lista-notificaciones">
+					<div th:each="historial : ${pendientes}"
+						class="alert alert-info alert-dismissable">
+						<strong>Recordatorio!</strong> El usuario <span
+							data-th-text="${historial.cliente}"></span> te calificó y no
+						respondiste la calificación. <a
+							data-th-href="@{/responder-calificacion/{id}(id=${historial.id})}">Click
+							Aquí</a> para responder
+					</div>
 				</div>
 			</div>
 		</section>
@@ -56,13 +65,20 @@
            within the template, in the div "javascript"
           -->
 	<div data-layout-fragment="javascript">
-	<script>
-		$( document ).ready(function() {
-			$("#clear-notif").on("click", function(){
-				$("#index-wrapper").hide(400);
+		<script>
+			$(document).ready(function() {
+				$("#clear-notif").on("click", function() {
+					$("#lista-notificaciones").hide(400);
+					$("#clear-notif").hide();
+					$("#show-notif").show();
+				});
+				$("#show-notif").on("click", function() {
+					$("#lista-notificaciones").show(400);
+					$("#show-notif").hide();
+					$("#clear-notif").show();
+				});
 			});
-		});
-	</script>
+		</script>
 	</div>
 
 </body>
